@@ -16,6 +16,18 @@
 		"url": "git://github.com/SlashmanX/RedditX.git"
 	},
 
+	"main": "app://host/src/app/index.html",
+	"window": {
+		"title": "RedditX",
+		"toolbar": false,
+		"frame": false,
+		"min_width": 960,
+		"min_height": 520,
+		"resizable": true,
+		"show": false,
+		"position": "center"
+	},
+
 	"dependencies": {},
 	"devDependencies": {
 		"matchdep": "~0.1.2",
