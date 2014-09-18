@@ -15,6 +15,7 @@ module.exports = function(grunt) {
 	});
 
 	grunt.loadNpmTasks('grunt-node-webkit-builder');
+	grunt.loadNpmTasks('grunt-bower-clean');
 	grunt.registerTask('default', ['nodewebkit']);
 
 };
