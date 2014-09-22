@@ -74,7 +74,7 @@ a { text-decoration: none; }
 -- App */
 
 // Header bar
-#header {
+#title-bar {
 	@include box-sizing(border-box);
 	border-bottom: 1px solid darken($header-color, 20%);
 	height: $header_height;
