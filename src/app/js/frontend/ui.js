@@ -1,30 +1,39 @@
-jQuery(function ($) {
+(function(App) {
+    'use strict';
 
-	// Maximize, minimize
-	$('.btn-os.max').on('click', function () {
-		if(win.isFullscreen) {
-			win.toggleFullscreen();
-		} else {
-			if (screen.availHeight <= win.height) {
-				win.unmaximize();
-			}
-			else {
-				win.maximize();
-			}
-		}
-	});
+    var _this;
 
-	$('.btn-os.min').on('click', function () {
-		win.minimize();
-	});
+    var MainWindow = Backbone.Marionette.Layout.extend({
+        template: '#main-window-tpl',
 
-	$('.btn-os.close').on('click', function () {
-		win.close();
-	});
+        id: 'main-window',
 
-	$('.btn-os.fullscreen').on('click', function () {
-		win.toggleFullscreen();
-		$('.btn-os.fullscreen').toggleClass('active');
-	});
+        regions: {
+            TitleBar: '#title-bar',
+            SideMenu: '#side-menu',
+            Content: '#content'
+        },
 
-});
+        initialize: function() {
+            _this = this;
+
+            this.nativeWindow = require('nw.gui').Window.get();
+        },
+
+        onShow: function() {
+            this.TitleBar.show(new App.View.TitleBar());
+            this.SideMenu.show(new App.View.SideMenu());
+
+            // Show loading modal on startup
+            var that = this;
+
+            // Cancel all new windows (Middle clicks / New Tab)
+            this.nativeWindow.on('new-win-policy', function(frame, url, policy) {
+                policy.ignore();
+            });
+
+        },
+    });
+
+    App.View.MainWindow = MainWindow = MainWindow;
+})(window.App);

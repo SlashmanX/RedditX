@@ -2,35 +2,13 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		
 		<link rel="stylesheet" type="text/css" href="css/app.css">
-
 	</head>
 	<body>
-		<header id="header"></header>
-
-		<script id="header-tpl" type="text/x-template">
-			<nav class="btn-set <%= process.platform %>">
-
-				<% _.each(buttons, function(button) { %>
-					<button class="btn-os <%= button %>"></button>
-				<% }); %>
-			</nav>
-
-			<nav class="btn-set fs-<%= process.platform %>">
-				<button class="btn-os fullscreen"></button>
-			</nav>
-			<h1>RedditX - Node webkit app</h1>
-		</script>
-
-		<div id="side-menu">
-			<h4>Menu</h4>
-			<ul class="categories">
-				<li class="active"><a  href="#"><i class="fa fa-user"></i>Item 1</a></li>
-				<li><a  href="#"><i class="fa fa-home"></i>Item 2</a></li>
-
-			</ul>
-		</div>
+		<div class="main-window-region"></div>
+		<script id="main-window-tpl" src="templates/main-window.tpl" type="text/x-template"></script>
+		<script id="title-bar-tpl" src="templates/title-bar.tpl" type="text/x-template"></script>
+		<script id="side-menu-tpl" src="templates/side-menu.tpl" type="text/x-template"></script>
 
 		<!-- Basic Dependencies -->
 		<script src="vendor/jquery/dist/jquery.min.js"></script>
@@ -46,7 +24,8 @@
 		<script src="js/app.js"></script>
 
 		<!-- UI -->
+		<script src="js/frontend/side-menu.js"></script>
+		<script src="js/frontend/title-bar.js"></script>
 		<script src="js/frontend/ui.js"></script>
-
 	</body>
 </html>

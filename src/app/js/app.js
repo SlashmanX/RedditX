@@ -23,29 +23,37 @@ var
 	// url object
 	url = require('url');
 
-	isWin = (process.platform === 'win32');
-	isLinux = (process.platform === 'linux');
-	isOSX = (process.platform === 'darwin');
-
-	BUTTON_ORDER = ['close', 'min', 'max'];
-
-	if (isWin)   { BUTTON_ORDER = ['min', 'max', 'close']; }
-	if (isLinux) { BUTTON_ORDER = ['min', 'max', 'close']; }
-	if (isOSX)   { BUTTON_ORDER = ['close', 'min', 'max']; }
-
+// Load in external templates
+_.each(document.querySelectorAll('[type="text/x-template"]'), function(el) {
+    $.get(el.src, function(res) {
+        el.innerHTML = res;
+    });
+});
 // Global App skeleton for backbone
-var App = {
-	Controller: {},
-	View: {},
-	Model: {},
-	Page: {},
-	Scrapers: {},
-	Providers: {},
-	Localization: {}
-};
- // render icons (win, mac, linux)
+var App = new Backbone.Marionette.Application();
+_.extend(App, {
+    Controller: {},
+    View: {},
+    Model: {},
+    Page: {},
+    Scrapers: {},
+    Providers: {},
+    Localization: {}
+});
 
- $("#header").html(_.template($('#header-tpl').html(), {buttons: BUTTON_ORDER}));
+App.addRegions({
+    Window: '.main-window-region'
+});
+
+App.addInitializer(function(options) {
+    var mainWindow = new App.View.MainWindow();
+    win.show();
+    try {
+        App.Window.show(mainWindow);
+    } catch (e) {
+        console.error('Couldn\'t start app: ', e, e.stack);
+    }
+});
 
 
 // Not debugging, hide all messages!
@@ -108,17 +116,13 @@ if (!isDebug) {
 		console.error.apply(console, params);
 	}
 }
+
 // Set the app title (for Windows mostly)
 win.title = 'RedditX';
 
 
 // Focus the window when the app opens
 win.focus();
-
-// Cancel all new windows (Middle clicks / New Tab)
-win.on('new-win-policy', function (frame, url, policy) {
-	policy.ignore();
-});
 
 var preventDefault = function(e) {
 	e.preventDefault();
@@ -128,5 +132,3 @@ window.addEventListener("dragover", preventDefault, false);
 window.addEventListener("drop", preventDefault, false);
 // Prevent dragging files outside the window
 window.addEventListener("dragstart", preventDefault, false);
-
-
