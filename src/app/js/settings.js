@@ -51,4 +51,4 @@ Settings = {
 	}
 };
 
-Settings.setup();
+//Settings.setup();

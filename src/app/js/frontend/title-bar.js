@@ -11,9 +11,9 @@
 		template: '#title-bar-tpl',
 
 		events: {
-            'click .btn-os.os-max': 'maximize',
-            'click .btn-os.os-min': 'minimize',
-            'click .btn-os.os-close': 'closeWindow',
+            'click .btn-os.max': 'maximize',
+            'click .btn-os.min': 'minimize',
+            'click .btn-os.close': 'closeWindow',
             'click .btn-os.fullscreen': 'toggleFullscreen'
         },
 

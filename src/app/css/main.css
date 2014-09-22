@@ -64,7 +64,7 @@ body {
 button {
   -webkit-app-region: no-drag;
 }
-#header {
+#title-bar {
   -webkit-user-select: none;
   -webkit-app-region: drag;
 }
@@ -141,7 +141,7 @@ a {
 
 /*
 -- App */
-#header {
+#title-bar {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -155,59 +155,59 @@ a {
   width: 100%;
   background-color:#222326;
 }
-#header h1 {
+#title-bar h1 {
   font-size: 13px;
 }
-#header .btn-set {
+#title-bar .btn-set {
   position: absolute;
   left: 15px;
   top: 17px;
 }
-#header .btn-set.right {
+#title-bar .btn-set.right {
   right: 7px;
   left: initial;
   top: 5px;
 }
-#header .btn-set.darwin {
+#title-bar .btn-set.darwin {
   position: absolute;
   left: 15px;
   top: 17px;
 }
-#header .btn-set.fs-darwin {
+#title-bar .btn-set.fs-darwin {
   right: 7px;
   left: initial;
   top: 5px;
 }
-#header .btn-set.linux {
-  right: 7px;
-  left: initial;
-  top: 15px;
-}
-#header .btn-set.fs-linux {
-  position: absolute;
-  left: 15px;
-  top: 5px;
-}
-#header .btn-set.win32 {
+#title-bar .btn-set.linux {
   right: 7px;
   left: initial;
   top: 15px;
 }
-#header .btn-set.fs-win32 {
+#title-bar .btn-set.fs-linux {
   position: absolute;
   left: 15px;
   top: 5px;
 }
-#header .btn-set:hover .btn-os {
+#title-bar .btn-set.win32 {
+  right: 7px;
+  left: initial;
+  top: 15px;
+}
+#title-bar .btn-set.fs-win32 {
+  position: absolute;
+  left: 15px;
+  top: 5px;
+}
+#title-bar .btn-set:hover .btn-os {
   color: rgba(0, 0, 0, 0.8);
 }
-#header .btn-set button {
+#title-bar .btn-set button {
   display: block;
   float: left;
   margin: 0 6px 0 0;
   background: #000;
 }
-#header .btn-set button.btn-os {
+#title-bar .btn-set button.btn-os {
   border-radius: 30px;
   border: 0;
   color: transparent;
@@ -218,7 +218,7 @@ a {
   text-align: center;
   width: 12px;
 }
-#header .btn-set button.debug {
+#title-bar .btn-set button.debug {
   background: #fff;
   content: 'D';
   color: #000;
@@ -227,16 +227,16 @@ a {
   text-transform: uppercase;
   width: auto;
 }
-#header .btn-set button.close:hover {
+#title-bar .btn-set button.close:hover {
   background: #e74c3c;
 }
-#header .btn-set button.max:hover {
+#title-bar .btn-set button.max:hover {
   background: #27ae60;
 }
-#header .btn-set button.min:hover {
+#title-bar .btn-set button.min:hover {
   background: #f1c40f;
 }
-#header .btn-set button.fullscreen {
+#title-bar .btn-set button.fullscreen {
   color: #000;
   background: transparent;
   margin: 0;
@@ -245,7 +245,7 @@ a {
   border-radius: 0;
   display: block;
 }
-#header .btn-set button.fullscreen::before {
+#title-bar .btn-set button.fullscreen::before {
   content: "\f085";
   font-family: 'FontAwesome';
   font-size: 1.85em;
@@ -254,9 +254,9 @@ a {
   display: block;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
 }
-#header .btn-set button.fullscreen.active::before {
+#title-bar .btn-set button.fullscreen.active::before {
   content: "\f085";
 }
-#header .btn-set button.fullscreen:hover {
+#title-bar .btn-set button.fullscreen:hover {
   color: rgba(0, 0, 0, 0.1);
 }

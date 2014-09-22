@@ -32,27 +32,23 @@ _.each(document.querySelectorAll('[type="text/x-template"]'), function(el) {
 // Global App skeleton for backbone
 var App = new Backbone.Marionette.Application();
 _.extend(App, {
-    Controller: {},
-    View: {},
-    Model: {},
-    Page: {},
-    Scrapers: {},
-    Providers: {},
-    Localization: {}
+    View: {}
 });
 
 App.addRegions({
     Window: '.main-window-region'
 });
 
-App.addInitializer(function(options) {
-    var mainWindow = new App.View.MainWindow();
-    win.show();
-    try {
-        App.Window.show(mainWindow);
-    } catch (e) {
-        console.error('Couldn\'t start app: ', e, e.stack);
-    }
+App.on('start', function(options) {
+	setTimeout(function() { // XXX: No idea why I need this, event are not firing correctly, will readdress
+	    try {
+	        App.Window.show(new App.View.MainWindow());
+	    } catch (e) {
+	        console.error('Couldn\'t start app: ', e, e.stack);
+	    }
+	    win.show();
+	}, 20)
+
 });
 
 
@@ -83,52 +79,8 @@ if (!isDebug) {
 	menubar.append(developerItem);
 	developerSubmenu.append(debugItem);
 	win.menu = menubar;
-
-	// Developer Shortcuts
-	document.addEventListener('keydown', function(event){
-		// F13 Opens DevTools
-		if( event.keyCode == 124 ) { win.showDevTools(); }
-		// F14 Reloads
-		if( event.keyCode == 125 ) { win.reloadIgnoringCache(); }
-	});
-
-	// Special Debug Console Calls!
-	console.logger = {};
-	console.logger.log = console.log.bind(console);
-	console.logger.debug = function() {
-		var params = Array.prototype.slice.call(arguments, 1);
-		params.unshift('%c[%cDEBUG%c] ' + arguments[0], 'color: black;', 'color: #00eb76;', 'color: black;');
-		console.debug.apply(console, params);
-	}
-	console.logger.info = function() {
-		var params = Array.prototype.slice.call(arguments, 1);
-		params.unshift('[%cINFO%c] ' + arguments[0], 'color: blue;', 'color: black;');
-		console.info.apply(console, params);
-	}
-	console.logger.warn = function() {
-		var params = Array.prototype.slice.call(arguments, 1);
-		params.unshift('[%cWARNING%c] ' + arguments[0], 'color: #ffc000;', 'color: black;');
-		console.warn.apply(console, params);
-	}
-	console.logger.error = function() {
-		var params = Array.prototype.slice.call(arguments, 1);
-		params.unshift('%c[%cERROR%c] ' + arguments[0], 'color: black;', 'color: #ff1500;', 'color: black;');
-		console.error.apply(console, params);
-	}
 }
-
-// Set the app title (for Windows mostly)
-win.title = 'RedditX';
-
-
-// Focus the window when the app opens
-win.focus();
 
 var preventDefault = function(e) {
 	e.preventDefault();
 }
-// Prevent dropping files into the window
-window.addEventListener("dragover", preventDefault, false);
-window.addEventListener("drop", preventDefault, false);
-// Prevent dragging files outside the window
-window.addEventListener("dragstart", preventDefault, false);
