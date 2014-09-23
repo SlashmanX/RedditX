@@ -14,7 +14,9 @@
 			gui.App.addOriginAccessWhitelistEntry('https://ssl.reddit.com/', "app", "host", true); 
 			var win = gui.Window.open($(e.target).attr('href'), {
 				toolbar: false,
-				frame: false
+				frame: false,
+				focus: true,
+				position: 'center'
 			});
 		}
 		

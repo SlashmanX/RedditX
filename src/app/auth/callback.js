@@ -1,3 +1,5 @@
+var gui = require('nw.gui');
+var win = gui.Window.get();
 (function (App) {
 	'use strict';
 	function getParameterByName(name) {
@@ -11,7 +13,7 @@
 		if(error === 'access_denied') {
 			console.log('User denied access');
 			window.opener.focus();
-			window.close();
+			win.close();
 			return;
 		}
 		return alert(error);
@@ -35,12 +37,12 @@
 			xhr.setRequestHeader ("Authorization", "Basic " + btoa(App.Auth.Config.client_id + ":"+ App.Auth.Config.secret_key)); 
 		},
 		success: function(data, textStatus, jqXHR) {
-			console.log(data);
 			if(data.access_token) {
 				localStorage.token = data.access_token;
+				App.vent.trigger('user:login');
 			};
 			window.opener.focus();
-			window.close();
+			win.close();
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
 			console.log(textStatus);

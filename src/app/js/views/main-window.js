@@ -18,6 +18,8 @@
             _this = this;
 
             this.nativeWindow = require('nw.gui').Window.get();
+
+            App.vent.on('user:login', _.bind(this.loginUser, this));
         },
 
         onShow: function() {
@@ -33,6 +35,11 @@
             });
 
         },
+
+        loginUser: function (e) {
+            // Just refresh the side menu for now
+            _this.SideMenu.show(new App.View.SideMenu());
+        }
     });
 
     App.View.MainWindow = MainWindow = MainWindow;
