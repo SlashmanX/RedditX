@@ -27,18 +27,20 @@
 		"title": "RedditX",
 		"toolbar": false,
 		"frame": false,
+		"width": 962,
+		"height": 600,
 		"min_width": 960,
 		"min_height": 520,
 		"resizable": true,
 		"show": false,
-		"position": "center"
+		"position": "center",
+		"resizeable": true
 	},
 
 	"user-agent" : "%name - %ver",
 
 	"dependencies": {
-		"node-reddit": "git://github.com/SlashmanX/node-reddit.git",
-		"oauth": "0.9.11"
+		"URIjs" : "1.14.0"
 	},
 	"devDependencies": {
 		"tmp": "0.0.24",

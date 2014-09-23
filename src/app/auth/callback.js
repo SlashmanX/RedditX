@@ -25,7 +25,7 @@ var win = gui.Window.get();
 
 	var code = getParameterByName('code');
 	App.Auth.getAccessToken(code, function(err, msg) {
-		if(err) alert(err ' : '+ msg);
+		if(err) alert(err +' : '+ msg);
 		window.opener.focus();
 		win.close();
 	});
