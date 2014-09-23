@@ -38,7 +38,8 @@ var win = gui.Window.get();
 		},
 		success: function(data, textStatus, jqXHR) {
 			if(data.access_token) {
-				localStorage.token = data.access_token;
+				localStorage.access_token = data.access_token;
+				localStorage.refresh_token = data.refresh_token;
 				App.vent.trigger('user:login');
 			};
 			window.opener.focus();
