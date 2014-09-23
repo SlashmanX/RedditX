@@ -79,6 +79,13 @@ if (!isDebug) {
 	menubar.append(developerItem);
 	developerSubmenu.append(debugItem);
 	win.menu = menubar;
+	// Developer Shortcuts
+	document.addEventListener('keydown', function(event){
+		// F13 Opens DevTools
+		if( event.keyCode == 123 ) { win.showDevTools(); }
+		// F14 Reloads
+		if( event.keyCode == 122 ) { win.reloadIgnoringCache(); }
+	});
 }
 
 var preventDefault = function(e) {

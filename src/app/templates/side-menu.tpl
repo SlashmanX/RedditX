@@ -1,6 +1,9 @@
 <h4>Menu</h4>
 <ul class="categories">
-	<li class="active"><a  href="#"><i class="fa fa-user"></i>Item 1</a></li>
-	<li><a  href="#"><i class="fa fa-home"></i>Item 2</a></li>
+	<% if (!localStorage.token) { %>
+		<li><a href="<%= App.Auth.generateAuthURL() %>" class='authenticate'><i class="fa fa-user"></i>Login to Reddit</a></li>
+	<% } else { %>
+		<li><a href="#"><i class="fa fa-user"></i>Logged In!</a></li>
+	<% } %>
 
 </ul>

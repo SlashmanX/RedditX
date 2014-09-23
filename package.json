@@ -28,6 +28,8 @@
 		"position": "center"
 	},
 
+	"user-agent" : "%name - %ver",
+
 	"dependencies": {
 		"node-reddit": "git://github.com/SlashmanX/node-reddit.git",
 		"oauth": "0.9.11"
