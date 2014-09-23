@@ -20,36 +20,14 @@ var win = gui.Window.get();
 	}
 
 	if(getParameterByName('state') !== App.Auth.state) {
-		return alert('Error!');
+		return alert('Error! State does not match');
 	}
 
 	var code = getParameterByName('code');
-
-	window.opener.$.ajax({
-		type: "POST",
-		url: 'https://ssl.reddit.com/api/v1/access_token',
-		data: {
-			'grant_type': 'authorization_code',
-			'code': code,
-			'redirect_uri': App.Auth.Config.callback_url
-		},
-		beforeSend: function (xhr) {
-			xhr.setRequestHeader ("Authorization", "Basic " + btoa(App.Auth.Config.client_id + ":"+ App.Auth.Config.secret_key)); 
-		},
-		success: function(data, textStatus, jqXHR) {
-			if(data.access_token) {
-				localStorage.access_token = data.access_token;
-				localStorage.refresh_token = data.refresh_token;
-				App.vent.trigger('user:login');
-			};
-			window.opener.focus();
-			win.close();
-		},
-		error: function(jqXHR, textStatus, errorThrown) {
-			console.log(textStatus);
-			alert(errorThrown);
-			return;
-		}
+	App.Auth.getAccessToken(code, function(err, msg) {
+		if(err) alert(err ' : '+ msg);
+		window.opener.focus();
+		win.close();
 	});
 
 })(window.opener.App);
