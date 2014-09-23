@@ -1,3 +1,6 @@
+var Reddit = require('node-reddit');
+var reddit;
+var Q = require('q');
 (function (App) {
 	'use strict';
 

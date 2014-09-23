@@ -47,6 +47,7 @@ var crypto = require('crypto');
 				if(data.access_token) {
 					localStorage.access_token = data.access_token;
 					localStorage.refresh_token = data.refresh_token;
+					localStorage.token_expires =  Date.now() + data.expires_in;
 					App.vent.trigger('user:login');
 				};
 				return cb(null, 'ok');
@@ -57,13 +58,13 @@ var crypto = require('crypto');
 		});
 	};
 
-	Auth.refreshAccessToken = function(token, cb) {
+	Auth.refreshAccessToken = function(cb) {
 		$.ajax({
 			type: "POST",
 			url: 'https://ssl.reddit.com/api/v1/access_token',
 			data: {
 				'grant_type': 'refresh_token',
-				'refresh_token': token
+				'refresh_token': localStorage.refresh_token
 			},
 			beforeSend: function (xhr) {
 				xhr.setRequestHeader ('Authorization', 'Basic ' + btoa(config.client_id + ':' + config.secret_key)); 
@@ -72,6 +73,7 @@ var crypto = require('crypto');
 				console.log(data);
 				if(data.access_token) {
 					localStorage.access_token = data.access_token;
+					localStorage.token_expires = new Date.now() + data.expires_in;
 				};
 				return cb(null, data.access_token)
 			},
@@ -80,7 +82,15 @@ var crypto = require('crypto');
 				return cb(errorThrown, textStatus);
 			}
 		});
-	}
+	};
+
+	Auth.checkTokenValid = function(cb){
+		if(localStorage.token_expires > Date.now()) {
+			console.log('refreshing token');
+			return Auth.refreshAccessToken(cb);
+		}
+		return cb();
+	};
 
 	App.Auth = Auth;
 })(window.App);
