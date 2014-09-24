@@ -25,30 +25,30 @@ var
 
 // Load in external templates
 _.each(document.querySelectorAll('[type="text/x-template"]'), function(el) {
-    $.get(el.src, function(res) {
-        el.innerHTML = res;
-    });
+	$.get(el.src, function(res) {
+		el.innerHTML = res;
+	});
 });
 // Global App skeleton for backbone
 var App = new Backbone.Marionette.Application();
 _.extend(App, {
-    View: {},
-    Model: {},
-    Providers: {}
+	View: {},
+	Model: {},
+	Providers: {}
 });
 
 App.addRegions({
-    Window: '.main-window-region'
+	Window: '.main-window-region'
 });
 
 App.on('start', function(options) {
 	setTimeout(function() { // XXX: No idea why I need this, event are not firing correctly, will readdress
-	    try {
-	        App.Window.show(new App.View.MainWindow());
-	    } catch (e) {
-	        console.error('Couldn\'t start app: ', e, e.stack);
-	    }
-	    win.show();
+		try {
+			App.Window.show(new App.View.MainWindow());
+		} catch (e) {
+			console.error('Couldn\'t start app: ', e, e.stack);
+		}
+		win.show();
 	}, 20)
 
 });
@@ -66,9 +66,14 @@ if (!isDebug) {
 	console.logger.error = console.logger.log;
 } else {
 	// Developer Menu building
-	var menubar = new gui.Menu({ type: 'menubar' }),
-	developerSubmenu = new gui.Menu(),
-	developerItem = new gui.MenuItem({
+	var menubar = new gui.Menu({ type: "menubar" });
+	menubar.createMacBuiltin("RedditX", {
+		hideEdit: true,
+		hideWindow: true
+	});
+	var developerSubmenu = new gui.Menu();
+
+	var developerItem = new gui.MenuItem({
 		label: 'Developer',
 		submenu: developerSubmenu
 	}),
