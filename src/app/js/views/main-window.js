@@ -21,6 +21,8 @@
 
 			App.User = new App.Model.User({id: Settings.get('activeUserId')});
 			App.User.fetch();
+
+			App.Reddit = new App.Providers.Reddit();
 			App.vent.on('user:initialize', _.bind(this.initialUserSetup, this));
 			App.vent.on('user:getinfo', _.bind(this.getUserInfo, this));
 			App.vent.on('user:getsubreddits', _.bind(this.getUserSubreddits, this));
@@ -46,7 +48,8 @@
 		},
 
 		getUserInfo: function() {
-			Reddit.me().then(function(info) {
+			App.Reddit.me().then(function(info) {
+				console.log(info);
 				App.User.set('id', info.id);
 				App.User.set('name', info.name);
 				App.User.set('link_karma', info.link_karma);
@@ -60,7 +63,7 @@
 		},
 
 		getUserSubreddits: function() {
-			Reddit.subreddits().then(function(subs) {
+			App.Reddit.subreddits().then(function(subs) {
 				App.User.set('subreddits', subs);
 			}).catch(function(err) {
 				console.error(err);
@@ -68,5 +71,5 @@
 		}
 	});
 
-App.View.MainWindow = MainWindow = MainWindow;
+	App.View.MainWindow = MainWindow = MainWindow;
 })(window.App);

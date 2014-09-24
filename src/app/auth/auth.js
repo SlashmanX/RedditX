@@ -98,7 +98,7 @@ var Q = require('q');
 			return Auth.refreshAccessToken();
 		}
 		else {
-			defer.resolve();
+			defer.resolve(App.User.get('access_token'));
 		}
 
 		return defer.promise;
