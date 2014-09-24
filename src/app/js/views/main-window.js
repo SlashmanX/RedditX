@@ -21,11 +21,9 @@
 			this.nativeWindow = require('nw.gui').Window.get();
 			Reddit = App.Providers.Reddit;
 
-			App.User = new App.Model.User({id: 1});
+			App.User = new App.Model.User({id: Settings.get('activeUserId')});
 			App.User.fetch();
-
-			App.vent.on('user:login', _.bind(this.updateUserInfo, this));
-			App.vent.on('user:gotinfo', _.bind(this.updateUserInfo, this));
+			App.vent.on('user:getinfo', _.bind(this.getUserInfo, this));
 		},
 
 		onShow: function() {
@@ -41,14 +39,18 @@
 			});
 
 		},
-		updateUserInfo: function () {
-			// Just refresh the side menu for now
-			//Reddit.me().then(function(info) {
-				//App.User = new App.Model.User(info);
-				_this.SideMenu.show(new App.View.SideMenu(App.User));
-			//}).catch(function(err) {
-			//	console.error(err);
-			//})
+
+		getUserInfo: function() {
+			Reddit.me().then(function(info) {
+				App.User.set('id', info.id);
+				App.User.set('name', info.name);
+				App.User.set('link_karma', info.link_karma);
+				App.User.set('comment_karma', info.comment_karma);
+				App.User.set('has_mail', info.has_mail);
+				Settings.set('activeUserId', info.id);
+			}).catch(function(err) {
+				console.error(err);
+			})
 		}
 	});
 

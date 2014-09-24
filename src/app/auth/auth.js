@@ -50,7 +50,7 @@ var Q = require('q');
 					App.User.set('access_token', data.access_token);
 					App.User.set('refresh_token', data.refresh_token);
 					App.User.set('token_expires',  Date.now() + data.expires_in);
-					App.vent.trigger('user:login');
+					App.vent.trigger('user:getinfo');
 				};
 				defer.resolve(data.access_token);
 			},
@@ -98,8 +98,10 @@ var Q = require('q');
 			return Auth.refreshAccessToken();
 		}
 		else {
-			return defer.resolve();
+			defer.resolve();
 		}
+
+		return defer.promise;
 	};
 
 	App.Auth = Auth;

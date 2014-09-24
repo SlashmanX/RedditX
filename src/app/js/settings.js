@@ -5,9 +5,14 @@ Settings app, getter & setter local storage
 Settings = {
 	"_defaultSettings": {
 		// Default to first version
-		"version": "0.1.0",
+		"version": "0.0.1",
 		// Used to check if there's an internet connection
-		"connectionCheckUrl": "http://www.google.com"
+		"connectionCheckUrl": "http://www.google.com",
+		// Used to store the current active account 
+		// (allows for account switching in the future)
+		// Has to be '-1' as null generates new object
+		// with backbone.localStorage
+		"activeUserId": -1
 	},
 
 	"setup": function(forceReset) {
@@ -21,11 +26,11 @@ Settings = {
 	},
 
 	"get": function(variable) {
-		return localStorage['settings_'+variable];
+		return localStorage['settings_'+ variable] || Settings._defaultSettings[variable];
 	},
 
 	"set": function(variable, newValue) {
-		localStorage.setItem('settings_'+variable, newValue);
+		localStorage.setItem('settings_'+ variable, newValue);
 	},
 
 	"getHardwareInfo": function() {
@@ -51,4 +56,4 @@ Settings = {
 	}
 };
 
-//Settings.setup();
+Settings.setup();

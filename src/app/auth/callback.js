@@ -1,5 +1,6 @@
 var gui = require('nw.gui');
 var win = gui.Window.get();
+var Q = require('q');
 (function (App) {
 	'use strict';
 	function getParameterByName(name) {
@@ -24,8 +25,7 @@ var win = gui.Window.get();
 	}
 
 	var code = getParameterByName('code');
-	App.Auth.getAccessToken(code, function(err, msg) {
-		if(err) alert(err +' : '+ msg);
+	App.Auth.getAccessToken(code).then(function(token) {
 		window.opener.focus();
 		win.close();
 	});

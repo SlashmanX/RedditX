@@ -16,18 +16,16 @@ var self;
 	Reddit.prototype.me = function() {
 		var defer = Q.defer();
 
-		self
+		this
 		.checkToken()
 		.then(function() {
 			reddit = new node_reddit(App.User.get('access_token'));
 			reddit
 			.u()
 			.then(function(info){
-				console.log(info);
-				defer.resolve(info);
+				defer.resolve(JSON.parse(info));
 			})
 			.catch(function(err) {
-				console.error(err);
 				defer.reject(err);
 			})
 		})

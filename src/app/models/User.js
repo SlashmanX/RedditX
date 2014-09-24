@@ -14,7 +14,8 @@
 			'comment_karma': 1,
 			'access_token': null,
 			'refresh_token': null,
-			'token_expires': 0
+			'token_expires': 0,
+			'has_mail': false
 		},
 
 		initialize: function() {
