@@ -48,8 +48,6 @@ var self;
 
 	Reddit.prototype.subreddits = function() {
 		var defer = Q.defer();
-		console.log('here');
-		console.log(reddit);
 
 		this
 		.checkToken()
