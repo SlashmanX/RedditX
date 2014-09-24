@@ -12,10 +12,9 @@ lib-cov
 .idea/
 
 node_modules/
-src/app/vendor
-src/app/themes
+src/vendor
+src/css
 build/
-cache/
 
 pids
 logs
@@ -25,7 +24,6 @@ npm-debug.log
 
 app.nw
 
-.sass-cache
 *-ck.js
 *.srt
 *.DS_Store
@@ -33,7 +31,6 @@ app.nw
 # vim swap files
 *.swp
 
-src/app/css/app.css
 *.sublime-*
 dist/windows/*.exe
 dist/linux/linux-installer

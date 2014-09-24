@@ -12,7 +12,7 @@ var Q = require('q');
 	var config = {
 		client_id : '5OYdh54OVnkBhQ',
 		secret_key : 'uOd4HRiLFIwQSK3j_uQm3Cn7bDs',
-		callback_url : 'app://redditx/src/app/auth/callback.html',
+		callback_url : 'app://redditx/src/auth/callback.html',
 		duration: 'permanent',
 		scope : 'identity,edit,flair,history,mysubreddits,privatemessages,read,report,save,submit,subscribe,vote'
 	};

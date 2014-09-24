@@ -31,12 +31,15 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-bower-clean');
 
 	grunt.registerTask('default', [
-		'jshint',
 		'bower_clean',
+		'css',
+		'jshint'
 	]);
 
 	grunt.registerTask('build', [
 		'bower_clean',
+		'css',
+		'jshint',
 		'nodewebkit'
 	]);
 
