@@ -27,6 +27,7 @@ module.exports = function(grunt) {
 	var currentVersion = pkgJson.version;
 
 	require('load-grunt-tasks')(grunt);
+	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-bower-clean');
 
 	grunt.registerTask('default', [
@@ -37,6 +38,10 @@ module.exports = function(grunt) {
 	grunt.registerTask('build', [
 		'bower_clean',
 		'nodewebkit'
+	]);
+
+	grunt.registerTask('css', [
+		'less'
 	]);
 
 	grunt.registerTask('start', function() {
@@ -56,19 +61,16 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 
-		stylus: {
+		less: {
 			compile: {
 				options: {
-					'resolve url': true,
-					use: ['nib'],
-					compress: false,
-					paths: ['src/app/styl']
+					compress: true,
+					paths: ['src/app/less']
 				},
-				expand: true,
-				cwd: 'src/app/styl',
-				src: '*.styl',
-				dest: 'src/app/themes/',
-				ext: '.css'
+				files: 
+					{
+						"src/app/css/app.css" : "src/app/less/app.less"
+					}
 			}
 
 		},
