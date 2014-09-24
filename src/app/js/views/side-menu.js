@@ -7,6 +7,10 @@ var Q = require('q');
 	var SideMenu = Backbone.Marionette.ItemView.extend({
 		template: '#side-menu-tpl',
 
+		initialize: function() {
+			this.model.on('change', this.render, this);
+		},
+
 		events : {
 			'click .authenticate' : 'launchOAuth'
 		},

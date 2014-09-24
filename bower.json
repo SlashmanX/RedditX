@@ -2,6 +2,7 @@
 	"name": "redditx",
 	"private": "true",
 	"dependencies": {
+		"backbone.localStorage": "1.1.13",
 		"jquery": "2.1.1",
 		"marionette": "~1.8.3",
 		"bootstrap": "~3.1.1",
@@ -9,44 +10,47 @@
 		"videojs-youtube": "1.1.0",
 		"mousetrap": "~1.4.6",
 		"font-awesome": "~4.1.0"
-		},
+	},
 	"dependenciesIgnore": {
 		"backbone": [
-		"**/!(backbone.js)"
+			"**/!(backbone.js)"
 		],
 		"jquery": [
-		"**/!(dist)"
+			"**/!(dist)"
 		],
 		"font-awesome": [
-		"less",
-		"scss",
+			"less",
+			"scss",
 		".*"
 		],
 		"videojs": [
-		"**/!(dist)"
+			"**/!(dist)"
 		],
 		"videojs-youtube": [
-		"**/!(src)"
+			"**/!(src)"
 		],
 		"underscore": [
-		"**/!(underscore.js)"
+			"**/!(underscore.js)"
 		],
 		"mousetrap": [
-		"tests",
-		".gitignore",
-		"./*!mousetrap.min.js"
+			"tests",
+			".gitignore",
+			"./*!mousetrap.min.js"
 		],
 		"marionette": [
-		"**/!(lib)"
+			"**/!(lib)"
 		],
 		"backbone.babysitter": [
-		"**/!(lib)"
+			"**/!(lib)"
+		],
+		"backbone.localStorage": [
+			"**/!backbone.localStorage-min.js"
 		],
 		"backbone.wreqr": [
-		"**/!(lib)"
+			"**/!(lib)"
 		],
 		"bootstrap": [
-		"**/!(dist)"
+			"**/!(dist)"
 		]
 	}
 }

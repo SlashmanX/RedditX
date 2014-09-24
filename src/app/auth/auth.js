@@ -1,5 +1,6 @@
 var URI = require('URIjs');
 var crypto = require('crypto');
+var Q = require('q');
 
 (function(App) {
 	'use strict';
@@ -32,6 +33,7 @@ var crypto = require('crypto');
 	}
 
 	Auth.getAccessToken = function(code, cb) {
+		var defer = Q.defer();
 		$.ajax({
 			type: "POST",
 			url: 'https://ssl.reddit.com/api/v1/access_token',
@@ -45,26 +47,29 @@ var crypto = require('crypto');
 			},
 			success: function(data, textStatus, jqXHR) {
 				if(data.access_token) {
-					localStorage.access_token = data.access_token;
-					localStorage.refresh_token = data.refresh_token;
-					localStorage.token_expires =  Date.now() + data.expires_in;
+					App.User.set('access_token', data.access_token);
+					App.User.set('refresh_token', data.refresh_token);
+					App.User.set('token_expires',  Date.now() + data.expires_in);
 					App.vent.trigger('user:login');
 				};
-				return cb(null, 'ok');
+				defer.resolve(data.access_token);
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
-				return cb(errorThrown, textStatus);
+				defer.reject(errorThrown);
 			}
 		});
+
+		return defer.promise;
 	};
 
 	Auth.refreshAccessToken = function(cb) {
+		var defer = Q.defer();
 		$.ajax({
 			type: "POST",
 			url: 'https://ssl.reddit.com/api/v1/access_token',
 			data: {
 				'grant_type': 'refresh_token',
-				'refresh_token': localStorage.refresh_token
+				'refresh_token': App.User.get('refresh_token')
 			},
 			beforeSend: function (xhr) {
 				xhr.setRequestHeader ('Authorization', 'Basic ' + btoa(config.client_id + ':' + config.secret_key)); 
@@ -72,24 +77,29 @@ var crypto = require('crypto');
 			success: function(data, textStatus, jqXHR) {
 				console.log(data);
 				if(data.access_token) {
-					localStorage.access_token = data.access_token;
-					localStorage.token_expires = new Date.now() + data.expires_in;
+					App.User.set('access_token', data.access_token);
+					App.User.set('token_expires', new Date.now() + data.expires_in);
 				};
-				return cb(null, data.access_token)
+				defer.resolve(data.access_token)
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				console.log('Error refreshing token: '+ errorThrown + ': ' + textStatus );
-				return cb(errorThrown, textStatus);
+				defer.reject(errorThrown);
 			}
 		});
+
+		return defer.promise;
 	};
 
-	Auth.checkTokenValid = function(cb){
+	Auth.checkTokenValid = function(){
+		var defer = Q.defer();
 		if(localStorage.token_expires > Date.now()) {
 			console.log('refreshing token');
-			return Auth.refreshAccessToken(cb);
+			return Auth.refreshAccessToken();
 		}
-		return cb();
+		else {
+			return defer.resolve();
+		}
 	};
 
 	App.Auth = Auth;
