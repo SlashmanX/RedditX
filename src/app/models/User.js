@@ -15,7 +15,8 @@
 			'access_token': null,
 			'refresh_token': null,
 			'token_expires': 0,
-			'has_mail': false
+			'has_mail': false,
+			'subreddits': []
 		},
 
 		initialize: function() {
@@ -23,7 +24,9 @@
 		},
 
 		change: function() {
-			this.save();
+			if(this.get('id') !== -1) { // Don't save to LocalStorage unless it's an actual user
+				this.save();
+			}
 		}
 	});
 

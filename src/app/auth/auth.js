@@ -50,7 +50,7 @@ var Q = require('q');
 					App.User.set('access_token', data.access_token);
 					App.User.set('refresh_token', data.refresh_token);
 					App.User.set('token_expires',  Date.now() + data.expires_in);
-					App.vent.trigger('user:getinfo');
+					App.vent.trigger('user:initialize');
 				};
 				defer.resolve(data.access_token);
 			},

@@ -33,6 +33,6 @@ var self;
 		return defer.promise;
 	}
 
-	App.Providers.Reddit = new Reddit();
+	Reddit = new Reddit();
 
 })(window.App);
