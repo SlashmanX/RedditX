@@ -1,0 +1,122 @@
+// Header bar
+#title-bar {
+	box-sizing: border-box;
+	border-bottom: 1px solid darken(@header-color, 20%);
+	height: $header_height;
+	left: 0;
+	padding: 15px;
+	position: absolute;
+	top: 0;
+	text-align: center;
+	width: 100%;
+	background-image: linear-gradient(to top,  @header-color, lighten(@header-color, 5%));
+	color:darken(@header-color, 60%);
+
+	h1 {
+		font-size: 13px;
+	}
+
+	.btn-set {
+		position: absolute;
+		left: 15px;
+		top: 17px;
+
+		&.right {
+			right: 7px;
+			left: initial;
+			top: 5px;
+
+		}
+
+		// Changes the min/max/close button position depending on OS
+		&.darwin {
+			position: absolute;
+			left: 15px;
+			top: 17px;
+		}
+		&.fs-darwin {
+			right: 7px;
+			left: initial;
+			top: 5px;
+		}
+
+		&.linux {
+			right: 7px;
+			left: initial;
+			top: 15px;
+		}
+		&.fs-linux {
+			position: absolute;
+			left: 15px;
+			top: 5px;
+		}
+
+		&.win32 {
+			right: 7px;
+			left: initial;
+			top: 15px;
+		}
+		&.fs-win32 {
+			position: absolute;
+			left: 15px;
+			top: 5px;
+		}
+
+		&:hover .btn-os { 
+			color: rgba(0, 0, 0, 0.8); 
+		}
+
+		button {
+			display: block;
+			float: left;
+			margin: 0 6px 0 0;
+			background: darken(@header-color, 25%);
+
+			&.btn-os {
+				border-radius: 30px;
+				border: 0;
+				color: transparent;
+				display: inline-block;
+				font-size: 10px;
+				height: 12px;
+				padding: 0;
+				text-align: center;
+				width: 12px;
+			}
+
+			&.close:hover { 
+				background: #e74c3c; 
+			}
+			&.max:hover { 
+				background: #27ae60; 
+			}
+			&.min:hover { 
+				background: #f1c40f; 
+			}
+			&.fullscreen { 
+				color: darken(@header-color, 30%); 
+				background: transparent; 
+				margin: 0; 
+				width: 32px;
+				height: 32px; 
+				border-radius:0; 
+				display:block;
+			}
+			&.fullscreen::before {
+				content: "\f065";
+				font-family: FontAwesome;
+				font-size: 1.5em;
+				line-height: 0.2em;
+				background: none;
+				display:block;
+				text-shadow: 0 1px 0 rgba(255,255,255,0.1)
+			}
+			&.fullscreen.active::before {
+				content: "\f065";
+			}
+			&.fullscreen:hover{
+				color:#b2b2b2;
+			}
+		}
+	}
+}

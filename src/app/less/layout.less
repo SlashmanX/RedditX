@@ -1,3 +1,73 @@
+/* Global elements */
+html,
 body {
-	background: black;
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	background: lighten(@maincolor, 60%);
+	border-radius: 5px;
+	cursor: default;
+	font-family: 'Open Sans', Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	color: @text-color;
+}
+
+::-webkit-input-placeholder {
+	color: rgba(255, 255, 255, 0.4);
+	font-weight: normal;
+}
+
+button:hover { 
+	cursor: pointer; 
+}
+:focus { 
+	outline: 0; 
+}
+a { 
+	text-decoration: none; 
+}
+
+.page {
+	.scrollable();
+	background: @body-bg;
+	height: 100%;
+	position: absolute;
+	width: 100%;
+}
+
+// Buttons
+.btn {
+	transition: background-color ease .3s;
+	color: #999999;
+	display: inline-block;
+	border-radius: 3px;
+	font-size: 13px;
+	line-height: 18px;
+	padding: 7px 12px;
+	background: @popcorn-blue;
+	cursor: pointer;
+	background-image: linear-gradient(to bottom, #3076ce 0%, #175ab0 100%);
+	color: #FFF;
+	font-weight: bold;
+	text-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+}
+
+.btn-action {
+	background: #bb2720;
+	border: 0;
+	border-radius: 5px;
+	color: #FFF;
+	display: block;
+	font-family: Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	margin-top: 10px;
+	padding: 12px 0;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+	text-transform: uppercase;
+	width: 155px;
 }

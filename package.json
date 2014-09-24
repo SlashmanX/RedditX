@@ -22,7 +22,7 @@
 		"test": "grunt --verbose"
 	},
 
-	"main": "app://host/src/app/index.html",
+	"main": "app://redditx/src/app/index.html",
 	"window": {
 		"title": "RedditX",
 		"toolbar": false,
