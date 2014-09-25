@@ -61,11 +61,14 @@
 			})
 		},
 
-		getUserSubreddits: function() {
+		getUserSubreddits: function(cb) {
 			App.Reddit.subreddits().then(function(subs) {
+				subs = _.sortBy(subs, function(sub) { return sub.display_name.toLowerCase()});
 				App.User.set('subreddits', subs);
+				if(cb) return cb();
 			}).catch(function(err) {
 				console.error(err);
+				if(cb) return cb();
 			})
 		}
 	});

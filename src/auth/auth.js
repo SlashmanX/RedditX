@@ -49,7 +49,7 @@ var Q = require('q');
 				if(data.access_token) {
 					App.User.set('access_token', data.access_token);
 					App.User.set('refresh_token', data.refresh_token);
-					App.User.set('token_expires',  Date.now() + data.expires_in);
+					App.User.set('token_expires', Date.now() + data.expires_in);
 					App.vent.trigger('user:initialize');
 				};
 				defer.resolve(data.access_token);
@@ -75,10 +75,9 @@ var Q = require('q');
 				xhr.setRequestHeader ('Authorization', 'Basic ' + btoa(config.client_id + ':' + config.secret_key)); 
 			},
 			success: function(data, textStatus, jqXHR) {
-				console.log(data);
 				if(data.access_token) {
 					App.User.set('access_token', data.access_token);
-					App.User.set('token_expires', new Date.now() + data.expires_in);
+					App.User.set('token_expires', Date.now() + data.expires_in);
 				};
 				defer.resolve(data.access_token)
 			},
@@ -93,7 +92,7 @@ var Q = require('q');
 
 	Auth.checkTokenValid = function(){
 		var defer = Q.defer();
-		if(localStorage.token_expires > Date.now()) {
+		if(App.User.get('token_expires') > Date.now()) {
 			console.log('refreshing token');
 			return Auth.refreshAccessToken();
 		}

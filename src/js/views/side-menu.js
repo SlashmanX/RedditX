@@ -12,7 +12,8 @@ var Q = require('q');
 		},
 
 		events : {
-			'click .authenticate' : 'launchOAuth'
+			'click .authenticate' : 'launchOAuth',
+			'click .refresh-subreddits' : 'refreshSubreddits'
 		},
 
 		launchOAuth : function(e) {
@@ -24,6 +25,13 @@ var Q = require('q');
 				frame: false,
 				focus: true,
 				position: 'center'
+			});
+		},
+
+		refreshSubreddits : function(e) {
+			$('.refresh-subreddits').addClass('fa-spin');
+			App.vent.trigger('user:getsubreddits', function() {
+				$('.refresh-subreddits').removeClass('fa-spin');
 			});
 		}
 		

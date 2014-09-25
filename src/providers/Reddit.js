@@ -58,10 +58,11 @@ var self;
 				defer.resolve(JSON.parse(info));
 			})
 			.catch(function(err) {
-				console.err(err);
+				console.log(err);
 				defer.reject(err);
 			})
 		}).catch(function(err) {
+			console.log(err);
 			defer.reject(err);
 		});
 
