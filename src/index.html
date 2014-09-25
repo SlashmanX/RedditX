@@ -2,15 +2,17 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 		<link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="css/app.css">
-		<link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/font-awesome.min.css">
 	</head>
 	<body>
 		<div class="main-window-region"></div>
 		<script id="main-window-tpl" src="templates/main-window.tpl" type="text/x-template"></script>
 		<script id="title-bar-tpl" src="templates/title-bar.tpl" type="text/x-template"></script>
 		<script id="side-menu-tpl" src="templates/side-menu.tpl" type="text/x-template"></script>
+		<script id="listing-tpl" src="templates/listing.tpl" type="text/x-template"></script>
 
 		<!-- Basic Dependencies -->
 		<script src="vendor/jquery/dist/jquery.min.js"></script>
@@ -31,11 +33,15 @@
 
 		<script src="providers/Reddit.js"></script>
 		<script src="models/User.js"></script>
+		<script src="models/Listing.js"></script>
+		<script src="models/ListingCollection.js"></script>
 
 		<!-- UI -->
 		<script src="js/views/main-window.js"></script>
 		<script src="js/views/side-menu.js"></script>
 		<script src="js/views/title-bar.js"></script>
+		<script src="js/views/listing.js"></script>
+		<script src="js/views/listings-view.js"></script>
 
 		<script src="js/bootstrap.js"></script>
 	</body>

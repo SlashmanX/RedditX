@@ -13,7 +13,7 @@ lib-cov
 
 node_modules/
 src/vendor
-src/css
+src/css/app.css
 build/
 
 pids

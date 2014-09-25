@@ -32,6 +32,7 @@
 		onShow: function() {
 			this.TitleBar.show(new App.View.TitleBar());
 			this.SideMenu.show(new App.View.SideMenu({model: App.User}));
+			this.getHomepage();
 
 			// Show loading modal on startup
 			var that = this;
@@ -73,9 +74,15 @@
 			})
 		},
 
-		getHomepage: function() {
-			App.Reddit.homepage({}).then(function(subs) {
-
+		getHomepage: function(cb) {
+			var s = [];
+			App.Reddit.homepage({})
+			.then(function(subs) {
+				_.each(subs, function(sub) {
+					s.push(new App.Model.Listing(sub))
+				});
+				var listingsCollection = new App.Model.ListingCollection(s);
+				_this.Content.show(new App.View.ListingsView({collection: listingsCollection}));
 			});
 		}
 	});

@@ -77,15 +77,12 @@ var self;
 			reddit
 			.homepage(opts)
 			.then(function(list) {
-				console.log(JSON.parse(list));
 				defer.resolve(JSON.parse(list));
 			})
 			.catch(function(err) {
-				console.log(err);
 				defer.reject(err);
 			})
 		}).catch(function(err) {
-			console.log(err);
 			defer.reject(err);
 		});
 		return defer.promise;

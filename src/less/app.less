@@ -8,3 +8,23 @@
 @import 'layout';
 @import 'title_bar';
 @import 'side_menu';
+
+#content {
+	.scrollable();
+	height: ~"calc(100% - @{header_height})";
+	margin: @header_height 0 0 @side-menu_width;
+	position: relative;
+	padding: 0px;
+
+	.listings {
+		.scrollable();
+		height: 100%;
+
+		.listing {
+			padding: 15px;
+			background-image: linear-gradient(to top,  @header-color, lighten(@header-color, 5%));
+			color:darken(@header-color, 60%);
+			border-bottom: 1px solid darken(@header-color, 20%);
+		}
+	}
+}
