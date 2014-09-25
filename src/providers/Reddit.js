@@ -67,6 +67,28 @@ var self;
 		});
 
 		return defer.promise;
+	};
+
+	Reddit.prototype.homepage = function(opts) {
+		var defer = Q.defer();
+		this
+		.checkToken()
+		.then(function() {
+			reddit
+			.homepage(opts)
+			.then(function(list) {
+				console.log(JSON.parse(list));
+				defer.resolve(JSON.parse(list));
+			})
+			.catch(function(err) {
+				console.log(err);
+				defer.reject(err);
+			})
+		}).catch(function(err) {
+			console.log(err);
+			defer.reject(err);
+		});
+		return defer.promise;
 	}
 
 	App.Providers.Reddit = Reddit;

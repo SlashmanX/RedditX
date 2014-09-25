@@ -26,6 +26,7 @@
 			App.vent.on('user:initialize', _.bind(this.initialUserSetup, this));
 			App.vent.on('user:getinfo', _.bind(this.getUserInfo, this));
 			App.vent.on('user:getsubreddits', _.bind(this.getUserSubreddits, this));
+			App.vent.on('user:gethomepage', _.bind(this.getHomepage, this));
 		},
 
 		onShow: function() {
@@ -70,6 +71,12 @@
 				console.error(err);
 				if(cb) return cb();
 			})
+		},
+
+		getHomepage: function() {
+			App.Reddit.homepage({}).then(function(subs) {
+
+			});
 		}
 	});
 
