@@ -49,7 +49,6 @@
 
 		getUserInfo: function() {
 			App.Reddit.me().then(function(info) {
-				console.log(info);
 				App.User.set('id', info.id);
 				App.User.set('name', info.name);
 				App.User.set('link_karma', info.link_karma);

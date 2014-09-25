@@ -33,13 +33,11 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', [
 		'bower_clean',
 		'css',
-		'jshint'
 	]);
 
 	grunt.registerTask('build', [
 		'bower_clean',
 		'css',
-		'jshint',
 		'nodewebkit'
 	]);
 
@@ -68,11 +66,11 @@ module.exports = function(grunt) {
 			compile: {
 				options: {
 					compress: true,
-					paths: ['src/app/less']
+					paths: ['src/less']
 				},
 				files: 
 					{
-						"src/app/css/app.css" : "src/app/less/app.less"
+						"src/css/app.css" : "src/less/app.less"
 					}
 			}
 
@@ -91,8 +89,7 @@ module.exports = function(grunt) {
 				linux32: buildPlatforms.linux32,
 				linux64: buildPlatforms.linux64,
 			},
-			src: ['./src/**', '!./src/app/styl/**',
-				'./node_modules/**', '!./node_modules/bower/**', '!./node_modules/*grunt*/**', '!./node_modules/stylus/**',
+			src: ['./src/**','./node_modules/**', '!./node_modules/bower/**', '!./node_modules/*grunt*/**', '!./node_modules/stylus/**',
 				'!./**/test*/**', '!./**/doc*/**', '!./**/example*/**', '!./**/demo*/**', '!./**/bin/**', '!./**/build/**', '!./**/.*/**',
 				'./package.json', './README.md', './LICENSE.txt'
 			]
@@ -122,9 +119,9 @@ module.exports = function(grunt) {
 			},
 			src: {
 				options: {
-					jshintrc: 'src/app/.jshintrc'
+					jshintrc: 'src/.jshintrc'
 				},
-				src: ['src/app/lib/*.js', 'src/app/lib/**/*.js', 'src/app/*.js']
+				src: ['src/lib/*.js', 'src/lib/**/*.js', 'src/*.js']
 			}
 		},
 

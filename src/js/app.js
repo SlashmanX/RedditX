@@ -67,10 +67,12 @@ if (!isDebug) {
 } else {
 	// Developer Menu building
 	var menubar = new gui.Menu({ type: "menubar" });
-	menubar.createMacBuiltin("RedditX", {
-		hideEdit: true,
-		hideWindow: true
-	});
+	if(process.platform === 'darwin') {
+		menubar.createMacBuiltin("RedditX", {
+			hideEdit: true,
+			hideWindow: true
+		});
+	}
 	var developerSubmenu = new gui.Menu();
 
 	var developerItem = new gui.MenuItem({
