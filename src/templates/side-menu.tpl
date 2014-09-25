@@ -1,14 +1,12 @@
-<h4>Menu</h4>
-<ul class="categories">
-	<% if (id === -1) { %>
+<% if (id === -1) { %>
+
+	<li><a href="<%= App.Auth.generateAuthURL() %>" class='authenticate'><i class="fa fa-user"></i>Login to Reddit</a></li>
+
+<% } else { %>
 
 
-		<li><a href="<%= App.Auth.generateAuthURL() %>" class='authenticate'><i class="fa fa-user"></i>Login to Reddit</a></li>
-
-
-	<% } else { %>
-
-
+	<h4>Profile</h4>
+	<ul class="user_info">
 		<li><a href="#"><i class="fa fa-user"></i><%= name %></a></li>
 		<li><a href="#"><i class="fa fa-link"></i><%= link_karma %></a></li>
 		<li><a href="#"><i class="fa fa-comment"></i><%= comment_karma %></a></li>
@@ -18,7 +16,14 @@
 			<li><a href="#"><i class="fa fa-envelope-o"></i>0</a></li>
 		<% } %>
 
+	</ul>
+	<h4>Subreddits</h4>
+	<ul class="user_subreddits">
+		<% for(var sub in subreddits) { %>
+			<li><a href="#" title="<%=subreddits[sub].public_description%>"><%= subreddits[sub].display_name%></a></li>
+		<% } %>
+	</ul>
 
-	<% } %>
 
-</ul>
+
+<% } %>
