@@ -1,5 +1,5 @@
 // Gives nicer scrollbars to an element
-.scrollable {
+.scrollable(@color: #000000) {
 
 	overflow-x: hidden;
 	// Overflow: overlay is an undocumented webkit feature. It places the scrollbar *on top* of the content instead of eating some 16px.
@@ -22,7 +22,7 @@
 		display: none;
 	}
 	&::-webkit-scrollbar-thumb {
-		background: rgba(0,0,0,0.0);
+		background: fade(@color, 0%);
 		background-clip: content-box;
 		border-radius: 10px;
 		border: 2px solid transparent;
@@ -35,17 +35,18 @@
 	}
 
 	&:hover {
+		cursor: pointer;
 		&::-webkit-scrollbar-thumb {
-			background: transparentize(#000000, 0.5);
+			background: fade(@color, 50%);
 			background-clip: content-box;
 			border-radius: 10px;
-			border: 1px solid rgba(255,255,255,0.15);
+			border: 1px solid fade(contrast(@color), 15%);
 
 			&:hover {
-				background: transparentize(#000000, 0.4);
+				background: fade(@color, 40%);
 				background-clip: content-box;
 				border-radius: 10px;
-				border: 1px solid rgba(255,255,255,0.2);
+				border: 1px solid fade(contrast(@color), 20%);
 			}
 		}
 	}
