@@ -20,7 +20,7 @@
 	<h4><i class ="fa fa-refresh refresh-subreddits"></i>Subreddits</h4>
 	<ul class="user_subreddits">
 		<% for(var sub in subreddits) { %>
-			<li><a href="#" title="<%=subreddits[sub].public_description%>"><%= subreddits[sub].display_name%></a></li>
+			<li><a href="<%=subreddits[sub].url%>" class = "subreddit" title="<%=subreddits[sub].public_description%>"><%= subreddits[sub].display_name%></a></li>
 		<% } %>
 	</ul>
 

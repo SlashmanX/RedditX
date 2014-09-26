@@ -26,7 +26,8 @@
 			App.vent.on('user:initialize', _.bind(this.initialUserSetup, this));
 			App.vent.on('user:getinfo', _.bind(this.getUserInfo, this));
 			App.vent.on('user:getsubreddits', _.bind(this.getUserSubreddits, this));
-			App.vent.on('user:gethomepage', _.bind(this.getHomepage, this));
+			App.vent.on('main:gethomepage', _.bind(this.getHomepage, this));
+			App.vent.on('main:getsubreddit', _.bind(this.getSubreddit, this));
 		},
 
 		onShow: function() {
@@ -75,13 +76,25 @@
 		},
 
 		getHomepage: function(cb) {
-			var s = [];
+			var l = [];
 			App.Reddit.homepage({})
-			.then(function(subs) {
-				_.each(subs, function(sub) {
-					s.push(new App.Model.Listing(sub))
+			.then(function(listings) {
+				_.each(listings, function(listing) {
+					l.push(new App.Model.Listing(listing))
 				});
-				var listingsCollection = new App.Model.ListingCollection(s);
+				var listingsCollection = new App.Model.ListingCollection(l);
+				_this.Content.show(new App.View.ListingsView({collection: listingsCollection}));
+			});
+		},
+
+		getSubreddit: function(r, opts, cb) {
+			var l = [];
+			App.Reddit.r(r, opts)
+			.then(function(listings) {
+				_.each(listings, function(listing) {
+					l.push(new App.Model.Listing(listing))
+				});
+				var listingsCollection = new App.Model.ListingCollection(l);
 				_this.Content.show(new App.View.ListingsView({collection: listingsCollection}));
 			});
 		}

@@ -53,7 +53,7 @@ var self;
 		.checkToken()
 		.then(function() {
 			reddit
-			.r()
+			.subscriber()
 			.then(function(info){
 				defer.resolve(JSON.parse(info));
 			})
@@ -76,6 +76,25 @@ var self;
 		.then(function() {
 			reddit
 			.homepage(opts)
+			.then(function(list) {
+				defer.resolve(JSON.parse(list));
+			})
+			.catch(function(err) {
+				defer.reject(err);
+			})
+		}).catch(function(err) {
+			defer.reject(err);
+		});
+		return defer.promise;
+	}
+
+	Reddit.prototype.r = function(r, opts) {
+		var defer = Q.defer();
+		this
+		.checkToken()
+		.then(function() {
+			reddit
+			.r(r, opts)
 			.then(function(list) {
 				defer.resolve(JSON.parse(list));
 			})
