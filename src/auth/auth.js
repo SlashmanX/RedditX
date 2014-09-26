@@ -49,7 +49,7 @@ var Q = require('q');
 				if(data.access_token) {
 					App.User.set('access_token', data.access_token);
 					App.User.set('refresh_token', data.refresh_token);
-					App.User.set('token_expires', Date.now() + data.expires_in);
+					App.User.set('token_expires', parseInt(Date.now(), 10) + (parseInt(data.expires_in, 10)) * 1000);
 					App.vent.trigger('user:initialize');
 				};
 				defer.resolve(data.access_token);
@@ -77,7 +77,7 @@ var Q = require('q');
 			success: function(data, textStatus, jqXHR) {
 				if(data.access_token) {
 					App.User.set('access_token', data.access_token);
-					App.User.set('token_expires', Date.now() + data.expires_in);
+					App.User.set('token_expires', parseInt(Date.now(), 10) + (parseInt(data.expires_in, 10)) * 1000);
 				};
 				defer.resolve(data.access_token)
 			},
@@ -92,7 +92,8 @@ var Q = require('q');
 
 	Auth.checkTokenValid = function(){
 		var defer = Q.defer();
-		if(App.User.get('token_expires') > Date.now()) {
+		var diff = Date.now() - App.User.get('token_expires');
+		if(parseInt(diff, 10) > 0) {
 			console.log('refreshing token');
 			return Auth.refreshAccessToken();
 		}
