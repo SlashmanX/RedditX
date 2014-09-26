@@ -1,7 +1,7 @@
 (function (App) {
 	'use strict';
 	var ListingsView = Backbone.Marionette.CollectionView.extend({
-		tagName: 'ul',
+		tagName: 'section',
 		className: 'listings',
 		itemView: App.View.Listing
 	});

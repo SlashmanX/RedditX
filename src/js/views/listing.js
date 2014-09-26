@@ -4,8 +4,8 @@
 	var Listing = Backbone.Marionette.ItemView.extend({
 		template: '#listing-tpl',
 
-		tagName: 'div',
-		className: 'listing row-fluid col-xs-12'
+		tagName: 'article',
+		className: 'listing'
 		
 	});
 	App.View.Listing = Listing;

@@ -1,13 +1,19 @@
-<div class="col-xs-1">
-	<div class="row-fluid">
-		<div class="col-xs-12">^</div>
+<div class="voting">
+	<div class = "upvote">
+		<i class="fa fa-chevron-up vote upvote <%=likes ? 'liked' : ''%>"></i>
 	</div>
-	<div class="row-fluid">
-		<div class="col-xs-12"><%= score %></div>
+	<div class = "score">
+		<span class = "vote score <%= likes ? 'liked' : likes==false ? 'disliked' : ''%>">
+			<%= score %>
+		</span>
 	</div>
-	<div class="row-fluid">
-		<div class="col-xs-12">v</div>
+	<div class="downvote">
+		<i class="fa fa-chevron-down vote downvote <%= likes==false ? 'disliked' : ''%>"></i>
 	</div>
 </div>
-<div class="col-xs-1"><img src = "<%= thumbnail %>" style="width:100%"/></div>
-<div class="col-xs-10"><%= title %></div>
+<div class="thumbnail">
+	<img src = "<%= thumbnail %>" style="width:100%"/>
+</div>
+<div class="info">
+	<%= title %>
+</div>
