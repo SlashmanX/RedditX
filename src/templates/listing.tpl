@@ -17,6 +17,6 @@
 <div class="info">
 	<div class = "title"><%= title %></div>
 	<div class = "metadata">
-		Posted by <span class="author"><%= author %></span> <span class="time_created"><%= created_utc %></span>
+		Posted by <span class="post_author"><%= author %></span> in <span class="post_subreddit"><%= subreddit %> <span class="post_time_created"><%= moment(created_utc, 'X').fromNow() %></span>
 	</div>
 </div>

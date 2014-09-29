@@ -21,7 +21,9 @@ var
 	fs = require('fs'),
 
 	// url object
-	url = require('url');
+	url = require('url'),
+
+	moment = require('moment');
 
 // Load in external templates
 _.each(document.querySelectorAll('[type="text/x-template"]'), function(el) {

@@ -1,6 +1,5 @@
 (function (App) {
 	'use strict';
-	var moment = require('moment');
 
 	var Listing = Backbone.Marionette.ItemView.extend({
 		template: '#listing-tpl',
@@ -10,6 +9,9 @@
 
 		events : {
 			'click .info' : 'loadSubmission'
+		},
+
+		initialize : function() {
 		},
 
 		loadSubmission: function(e) {

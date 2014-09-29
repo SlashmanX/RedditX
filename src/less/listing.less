@@ -51,6 +51,24 @@
 		.info {
 			flex: 10;
 			align-self: center;
+			display: flex;
+			align-content: stretch;
+			align-items: stretch;
+			align-self: stretch;
+			flex-wrap: wrap;
+
+			.title {
+				order: 1;
+				flex: 0 1 100%;
+				align-self: flex-end;
+			}
+
+			.metadata {
+				order: 2;
+				flex: 0 1 100%;
+				align-self: flex-end;
+				font-size: 0.7em;
+			}
 		}
 	}
 }
