@@ -40,6 +40,7 @@
 	"user-agent" : "%name - %ver",
 
 	"dependencies": {
+		"moment": "2.8.3",
 		"node-reddit" : "git://github.com/SlashmanX/node-reddit.git",
 		"q": "1.0.1",
 		"URIjs" : "1.14.0"

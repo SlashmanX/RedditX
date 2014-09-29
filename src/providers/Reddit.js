@@ -107,6 +107,25 @@ var self;
 		return defer.promise;
 	}
 
+	Reddit.prototype.submission = function(article, opts) {
+		var defer = Q.defer();
+		this
+		.checkToken()
+		.then(function() {
+			reddit
+			.submission(article, opts)
+			.then(function(sub) {
+				defer.resolve(JSON.parse(sub));
+			})
+			.catch(function(err) {
+				defer.reject(err);
+			})
+		}).catch(function(err) {
+			defer.reject(err);
+		});
+		return defer.promise;
+	}
+
 	App.Providers.Reddit = Reddit;
 
 })(window.App);

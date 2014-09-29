@@ -3,13 +3,12 @@
 	"private": "true",
 	"dependencies": {
 		"backbone.localStorage": "1.1.13",
+		"font-awesome": "~4.1.0",
 		"jquery": "2.1.1",
 		"marionette": "~1.8.3",
-		"bootstrap": "~3.1.1",
-		"videojs": "4.6.1",
-		"videojs-youtube": "1.1.0",
 		"mousetrap": "~1.4.6",
-		"font-awesome": "~4.1.0"
+		"videojs": "4.6.1",
+		"videojs-youtube": "1.1.0"
 	},
 	"dependenciesIgnore": {
 		"backbone": [

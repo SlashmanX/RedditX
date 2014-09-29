@@ -11,7 +11,8 @@
 		regions: {
 			TitleBar: '#title-bar',
 			SideMenu: '#side-menu',
-			Content: '#content'
+			Content: '#content',
+			Submission: '#submission'
 		},
 
 		initialize: function() {
@@ -28,6 +29,7 @@
 			App.vent.on('user:getsubreddits', _.bind(this.getUserSubreddits, this));
 			App.vent.on('main:gethomepage', _.bind(this.getHomepage, this));
 			App.vent.on('main:getsubreddit', _.bind(this.getSubreddit, this));
+			App.vent.on('main:getsubmission', _.bind(this.getSubmission, this));
 		},
 
 		onShow: function() {
@@ -96,6 +98,14 @@
 				});
 				var listingsCollection = new App.Model.ListingCollection(l);
 				_this.Content.show(new App.View.ListingsView({collection: listingsCollection}));
+			});
+		},
+
+		getSubmission: function(article, opts, cb) {
+			var l = [];
+			App.Reddit.submission(article, opts)
+			.then(function(sub) {
+				console.log(sub);
 			});
 		}
 	});

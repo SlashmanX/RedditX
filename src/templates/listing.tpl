@@ -15,5 +15,8 @@
 	<img src = "<%= thumbnail %>" style="width:100%"/>
 </div>
 <div class="info">
-	<%= title %>
+	<div class = "title"><%= title %></div>
+	<div class = "metadata">
+		Posted by <span class="author"><%= author %></span> <span class="time_created"><%= created_utc %></span>
+	</div>
 </div>
