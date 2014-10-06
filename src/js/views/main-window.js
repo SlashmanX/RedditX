@@ -24,12 +24,18 @@
 			App.User.fetch();
 
 			App.Reddit = new App.Providers.Reddit();
+
 			App.vent.on('user:initialize', _.bind(this.initialUserSetup, this));
 			App.vent.on('user:getinfo', _.bind(this.getUserInfo, this));
 			App.vent.on('user:getsubreddits', _.bind(this.getUserSubreddits, this));
+
 			App.vent.on('main:gethomepage', _.bind(this.getHomepage, this));
 			App.vent.on('main:getsubreddit', _.bind(this.getSubreddit, this));
 			App.vent.on('main:getsubmission', _.bind(this.getSubmission, this));
+
+			App.vent.on('main:upvote', _.bind(this.upvote, this));
+			App.vent.on('main:downvote', _.bind(this.downvote, this));
+			App.vent.on('main:unvote', _.bind(this.unvote, this));
 		},
 
 		onShow: function() {
@@ -106,6 +112,28 @@
 			App.Reddit.submission(article, opts)
 			.then(function(sub) {
 				console.log(sub);
+			});
+		},
+
+		upvote: function(article, cb) {
+			console.log(article);
+			App.Reddit.upvote(article)
+			.then(function() {
+				cb();
+			});
+		},
+
+		downvote: function(article, cb) {
+			App.Reddit.downvote(article)
+			.then(function() {
+				cb()
+			});
+		},
+
+		unvote: function(article, cb) {
+			App.Reddit.unvote(article)
+			.then(function() {
+				cb();
 			});
 		}
 	});

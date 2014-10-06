@@ -126,6 +126,63 @@ var self;
 		return defer.promise;
 	}
 
+	Reddit.prototype.upvote = function(thing) {
+		var defer = Q.defer();
+		this
+		.checkToken()
+		.then(function() {
+			reddit
+			.upvote(thing)
+			.then(function(res) {
+				defer.resolve(res);
+			})
+			.catch(function(err) {
+				defer.reject(err);
+			})
+		}).catch(function(err) {
+			defer.reject(err);
+		});
+		return defer.promise;
+	}
+
+	Reddit.prototype.downvote = function(thing) {
+		var defer = Q.defer();
+		this
+		.checkToken()
+		.then(function() {
+			reddit
+			.downvote(thing)
+			.then(function(res) {
+				defer.resolve(res);
+			})
+			.catch(function(err) {
+				defer.reject(err);
+			})
+		}).catch(function(err) {
+			defer.reject(err);
+		});
+		return defer.promise;
+	}
+
+	Reddit.prototype.unvote = function(thing) {
+		var defer = Q.defer();
+		this
+		.checkToken()
+		.then(function() {
+			reddit
+			.unvote(thing)
+			.then(function(res) {
+				defer.resolve(res);
+			})
+			.catch(function(err) {
+				defer.reject(err);
+			})
+		}).catch(function(err) {
+			defer.reject(err);
+		});
+		return defer.promise;
+	}
+
 	App.Providers.Reddit = Reddit;
 
 })(window.App);
