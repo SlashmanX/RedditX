@@ -1,29 +1,16 @@
-var
-	// Configuration variable
-	applicationRoot = './',
+var applicationRoot = './';
 
-	// Load native UI library
-	gui = require('nw.gui'),
+var gui = require('nw.gui');
 
-	// Debug flag
-	isDebug = gui.App.argv.indexOf('--debug') > -1,
+// Debug flag
+var isDebug = gui.App.argv.indexOf('--debug') > -1;
 
-	// browser window object
-	win = gui.Window.get(),
-
-	// os object
-	os = require('os');
-
-	// path object
-	path = require('path'),
-
-	// fs object (file system)
-	fs = require('fs'),
-
-	// url object
-	url = require('url'),
-
-	moment = require('moment');
+var win = gui.Window.get();
+var os = require('os');
+var path = require('path');
+var fs = require('fs');
+var url = require('url');
+var moment = require('moment');
 
 // Load in external templates
 _.each(document.querySelectorAll('[type="text/x-template"]'), function(el) {
@@ -51,7 +38,7 @@ App.on('start', function(options) {
 			console.error('Couldn\'t start app: ', e, e.stack);
 		}
 		win.show();
-	}, 20)
+	}, 20);
 
 });
 
@@ -68,9 +55,9 @@ if (!isDebug) {
 	console.logger.error = console.logger.log;
 } else {
 	// Developer Menu building
-	var menubar = new gui.Menu({ type: "menubar" });
+	var menubar = new gui.Menu({ type: 'menubar' });
 	if(process.platform === 'darwin') {
-		menubar.createMacBuiltin("RedditX", {
+		menubar.createMacBuiltin('RedditX', {
 			hideEdit: true,
 			hideWindow: true
 		});
@@ -93,12 +80,16 @@ if (!isDebug) {
 	// Developer Shortcuts
 	document.addEventListener('keydown', function(event){
 		// F13 Opens DevTools
-		if( event.keyCode == 123 ) { win.showDevTools(); }
+		if( event.keyCode === 123 ) { 
+			win.showDevTools(); 
+		}
 		// F14 Reloads
-		if( event.keyCode == 122 ) { win.reloadIgnoringCache(); }
+		if( event.keyCode === 122 ) { 
+			win.reloadIgnoringCache(); 
+		}
 	});
 }
 
 var preventDefault = function(e) {
 	e.preventDefault();
-}
+};

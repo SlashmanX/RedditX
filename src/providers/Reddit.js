@@ -26,6 +26,7 @@ var self;
 	}
 
 	Reddit.prototype.call = function(method, args, otherArgs) {
+		console.log(arguments);
 		var defer = Q.defer();
 		this.checkToken()
 		.then(function() {

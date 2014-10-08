@@ -39,7 +39,7 @@ var Q = require('q');
 		loadSubreddit : function(e) {
 			e.preventDefault();
 			var r = $(e.target).attr('href').replace('/r/', '');
-			App.vent.trigger('main:getsubreddit', r, {});
+			App.vent.trigger('browser:getsubreddit', r);
 		}
 		
 	});
