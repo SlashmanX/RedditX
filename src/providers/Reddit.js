@@ -25,161 +25,25 @@ var self;
 		reddit.setToken(token);
 	}
 
-	Reddit.prototype.me = function() {
+	Reddit.prototype.call = function(method, args, otherArgs) {
 		var defer = Q.defer();
-
-		this
-		.checkToken()
+		this.checkToken()
 		.then(function() {
-			reddit
-			.u()
-			.then(function(info){
-				defer.resolve(JSON.parse(info));
-			})
-			.catch(function(err) {
-				defer.reject(err);
-			})
-		}).catch(function(err) {
-			defer.reject(err);
-		});
-
-		return defer.promise;
-	};
-
-	Reddit.prototype.subreddits = function() {
-		var defer = Q.defer();
-
-		this
-		.checkToken()
-		.then(function() {
-			reddit
-			.subscriber()
-			.then(function(info){
-				defer.resolve(JSON.parse(info));
+			console.log('calling: '+ method);
+			reddit[method](args, otherArgs)
+			.then(function(res) {
+				defer.resolve(JSON.parse(res));
 			})
 			.catch(function(err) {
 				console.log(err);
 				defer.reject(err);
 			})
-		}).catch(function(err) {
+		})
+		.catch(function(err) {
 			console.log(err);
 			defer.reject(err);
-		});
+		})
 
-		return defer.promise;
-	};
-
-	Reddit.prototype.homepage = function(opts) {
-		var defer = Q.defer();
-		this
-		.checkToken()
-		.then(function() {
-			reddit
-			.homepage(opts)
-			.then(function(list) {
-				defer.resolve(JSON.parse(list));
-			})
-			.catch(function(err) {
-				defer.reject(err);
-			})
-		}).catch(function(err) {
-			defer.reject(err);
-		});
-		return defer.promise;
-	}
-
-	Reddit.prototype.r = function(r, opts) {
-		var defer = Q.defer();
-		this
-		.checkToken()
-		.then(function() {
-			reddit
-			.r(r, opts)
-			.then(function(list) {
-				defer.resolve(JSON.parse(list));
-			})
-			.catch(function(err) {
-				defer.reject(err);
-			})
-		}).catch(function(err) {
-			defer.reject(err);
-		});
-		return defer.promise;
-	}
-
-	Reddit.prototype.submission = function(article, opts) {
-		var defer = Q.defer();
-		this
-		.checkToken()
-		.then(function() {
-			reddit
-			.submission(article, opts)
-			.then(function(sub) {
-				defer.resolve(JSON.parse(sub));
-			})
-			.catch(function(err) {
-				defer.reject(err);
-			})
-		}).catch(function(err) {
-			defer.reject(err);
-		});
-		return defer.promise;
-	}
-
-	Reddit.prototype.upvote = function(thing) {
-		var defer = Q.defer();
-		this
-		.checkToken()
-		.then(function() {
-			reddit
-			.upvote(thing)
-			.then(function(res) {
-				defer.resolve(res);
-			})
-			.catch(function(err) {
-				defer.reject(err);
-			})
-		}).catch(function(err) {
-			defer.reject(err);
-		});
-		return defer.promise;
-	}
-
-	Reddit.prototype.downvote = function(thing) {
-		var defer = Q.defer();
-		this
-		.checkToken()
-		.then(function() {
-			reddit
-			.downvote(thing)
-			.then(function(res) {
-				defer.resolve(res);
-			})
-			.catch(function(err) {
-				defer.reject(err);
-			})
-		}).catch(function(err) {
-			defer.reject(err);
-		});
-		return defer.promise;
-	}
-
-	Reddit.prototype.unvote = function(thing) {
-		var defer = Q.defer();
-		this
-		.checkToken()
-		.then(function() {
-			reddit
-			.unvote(thing)
-			.then(function(res) {
-				defer.resolve(res);
-			})
-			.catch(function(err) {
-				defer.reject(err);
-			})
-		}).catch(function(err) {
-			defer.reject(err);
-		});
 		return defer.promise;
 	}
 

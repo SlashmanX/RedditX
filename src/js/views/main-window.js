@@ -59,7 +59,7 @@
 		},
 
 		getUserInfo: function() {
-			App.Reddit.me().then(function(info) {
+			App.Reddit.call('me').then(function(info) {
 				App.User.set('id', info.id);
 				App.User.set('name', info.name);
 				App.User.set('link_karma', info.link_karma);
@@ -73,8 +73,11 @@
 		},
 
 		getUserSubreddits: function(cb) {
-			App.Reddit.subreddits().then(function(subs) {
-				subs = _.sortBy(subs, function(sub) { return sub.display_name.toLowerCase()});
+			App.Reddit.call('subreddits', {}).then(function(subs) {
+				subs = _.sortBy(subs, function(sub) { 
+					return sub.display_name.toLowerCase()
+				});
+
 				App.User.set('subreddits', subs);
 				if(cb) return cb();
 			}).catch(function(err) {
@@ -85,7 +88,7 @@
 
 		getHomepage: function(cb) {
 			var l = [];
-			App.Reddit.homepage({})
+			App.Reddit.call('homepage', {})
 			.then(function(listings) {
 				_.each(listings, function(listing) {
 					l.push(new App.Model.Listing(listing))
@@ -97,7 +100,7 @@
 
 		getSubreddit: function(r, opts, cb) {
 			var l = [];
-			App.Reddit.r(r, opts)
+			App.Reddit.call('r', r, opts)
 			.then(function(listings) {
 				_.each(listings, function(listing) {
 					l.push(new App.Model.Listing(listing))
@@ -109,29 +112,28 @@
 
 		getSubmission: function(article, opts, cb) {
 			var l = [];
-			App.Reddit.submission(article, opts)
+			App.Reddit.call('submission', article, opts)
 			.then(function(sub) {
 				console.log(sub);
 			});
 		},
 
 		upvote: function(article, cb) {
-			console.log(article);
-			App.Reddit.upvote(article)
+			App.Reddit.call('upvote', article)
 			.then(function() {
 				cb();
 			});
 		},
 
 		downvote: function(article, cb) {
-			App.Reddit.downvote(article)
+			App.Reddit.call('downvote', article)
 			.then(function() {
 				cb()
 			});
 		},
 
 		unvote: function(article, cb) {
-			App.Reddit.unvote(article)
+			App.Reddit.call('unvote', article)
 			.then(function() {
 				cb();
 			});
