@@ -29,18 +29,16 @@ var self;
 		var defer = Q.defer();
 		this.checkToken()
 		.then(function() {
-			console.log('calling: '+ method);
 			reddit[method](args, otherArgs)
 			.then(function(res) {
-				defer.resolve(JSON.parse(res));
+				if(res) res = JSON.parse(res);
+				defer.resolve(res);
 			})
 			.catch(function(err) {
-				console.log(err);
 				defer.reject(err);
 			})
 		})
 		.catch(function(err) {
-			console.log(err);
 			defer.reject(err);
 		})
 

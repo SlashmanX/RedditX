@@ -18,6 +18,7 @@
 		},
 
 		initialize : function() {
+			this.model.on('change', this.render, this);
 		},
 
 		loadSubmission: function(e) {
@@ -25,48 +26,57 @@
 		},
 
 		upvote: function(e) {
-			if(this.model.get('likes')){
-				console.log('likes, unvoting');
-				return unvote();
+
+			e.stopPropagation();
+			var _this = this;
+			if(_this.model.get('likes')){
+				return _this.unvote();
 			}
 			else {
-				App.vent.trigger('main:upvote', this.model.get('name'), function() {
-					this.model.set('likes', true);
-					this.model.set('score', this.model.get('score') + 1);
-
-					voting.render();
+				App.vent.trigger('main:upvote', _this.model.get('name'), function() {
+					if(_this.model.get('likes') != null && _this.model.get('likes') == false) { // was downvoted before
+						_this.model.set('score', _this.model.get('score') + 2);
+					}
+					else {
+						_this.model.set('score', _this.model.get('score') + 1);
+					}
+					_this.model.set('likes', true);
 				})
 			}
-			e.stopPropagation();
 		},
 
 		downvote: function(e) {
-			if(this.model.get('likes') != null && this.model.get('likes') == 'false') {
-				return unvote();
+			var _this = this;
+
+			e.stopPropagation();
+
+			if(_this.model.get('likes') != null && _this.model.get('likes') == false) {
+				return _this.unvote();
 			}
 			else {
-				App.vent.trigger('main:downvote', this.model.get('name'), function() {
-					this.model.set('likes', false);
-					this.model.set('score', this.model.get('score') - 1);
-					voting.render();
+				App.vent.trigger('main:downvote', _this.model.get('name'), function() {
+					if(_this.model.get('likes')) { // was upvoted before downvoting
+						_this.model.set('score', _this.model.get('score') - 2);
+					}
+					else {
+						_this.model.set('score', _this.model.get('score') - 1);
+					}
+					_this.model.set('likes', false);
 				})
 			}
-			e.stopPropagation();
 		},
 
-		unvote: function(e) {
-			App.vent.trigger('main:unvote', this.model.get('name'), function() {
-				if(this.model.get('likes')) {
-					this.model.set('score', this.model.get('score') - 1);
+		unvote: function() {
+			var _this = this;
+			App.vent.trigger('main:unvote', _this.model.get('name'), function() {
+				if(_this.model.get('likes')) {
+					_this.model.set('score', _this.model.get('score') - 1);
 				}
 				else {
-					this.model.set('score', this.model.get('score') + 1);
+					_this.model.set('score', _this.model.get('score') + 1);
 				}
-				this.model.set('likes', null);
-
-				voting.render();
+				_this.model.set('likes', null);
 			})
-			e.stopPropagation();
 		},
 		
 	});
