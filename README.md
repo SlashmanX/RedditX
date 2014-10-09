@@ -1,4 +1,4 @@
-RedditX [![Build Status](https://travis-ci.org/SlashmanX/RedditX.svg)](https://travis-ci.org/SlashmanX/RedditX) [![Dependency Status](https://david-dm.org/SlashmanX/RedditX.svg)](https://david-dm.org/SlashmanX/RedditX)
+RedditX [![Build Status](https://travis-ci.org/SlashmanX/RedditX.svg)](https://travis-ci.org/SlashmanX/RedditX) [![Dependency Status](https://david-dm.org/SlashmanX/RedditX.svg)](https://david-dm.org/SlashmanX/RedditX) [![devDependency Status](https://david-dm.org/SlashmanX/RedditX/dev-status.svg)](https://david-dm.org/SlashmanX/RedditX#info=devDependencies)
 ====================
 Reddit App built in Node-Webkit
 

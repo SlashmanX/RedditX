@@ -47,16 +47,16 @@
 	},
 	"devDependencies": {
 		"tmp": "0.0.24",
-		"bower": "1.3.9",
+		"bower": "1.3.12",
 		"grunt": "0.4.5",
-		"grunt-contrib-clean": "^0.6.0",
-		"grunt-bower-clean": "^0.2.1",
-		"grunt-contrib-compress": "^0.11.0",
+		"grunt-contrib-clean": "0.6.0",
+		"grunt-bower-clean": "0.2.2",
+		"grunt-contrib-compress": "0.12.0",
 		"grunt-contrib-less": "0.11.4",
 		"grunt-contrib-jshint": "^0.10.0",
 		"grunt-contrib-watch": "0.6.x",
-		"grunt-exec": "0.4.x",
-		"grunt-node-webkit-builder": "0.2.x",
+		"grunt-exec": "0.4.6",
+		"grunt-node-webkit-builder": "0.2.3",
 		"load-grunt-tasks": "0.6.0"
 	},
 
