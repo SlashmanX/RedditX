@@ -73,21 +73,25 @@
 				Settings.set('activeUserId', info.id);
 			}).catch(function(err) {
 				console.error(err);
-			})
+			});
 		},
 
 		getUserSubreddits: function(cb) {
 			App.Reddit.call('subreddits', {}).then(function(subs) {
 				subs = _.sortBy(subs, function(sub) { 
-					return sub.display_name.toLowerCase()
+					return sub.display_name.toLowerCase();
 				});
 
 				App.User.set('subreddits', subs);
-				if(cb) return cb();
+				if(cb) {
+					return cb();
+				}
 			}).catch(function(err) {
 				console.error(err);
-				if(cb) return cb();
-			})
+				if(cb) {
+					return cb();
+				}
+			});
 		},
 
 		getSubmission: function(article, opts, cb) {
@@ -108,7 +112,7 @@
 		downvote: function(article, cb) {
 			App.Reddit.call('downvote', article)
 			.then(function() {
-				cb()
+				cb();
 			});
 		},
 

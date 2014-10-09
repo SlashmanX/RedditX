@@ -36,6 +36,7 @@
 		"Model": true,
 		"Providers": true,
 		"View": true,
+		"Settings": true,
 		
 		// Third party
 		"Backbone": true,

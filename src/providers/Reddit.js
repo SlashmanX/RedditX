@@ -19,32 +19,33 @@ var self;
 			defer.reject(err);
 		});
 		return defer.promise;
-	}
+	};
 
 	Reddit.prototype.setToken = function(token) {
 		reddit.setToken(token);
-	}
+	};
 
 	Reddit.prototype.call = function(method, args, otherArgs) {
-		console.log(arguments);
 		var defer = Q.defer();
 		this.checkToken()
 		.then(function() {
 			reddit[method](args, otherArgs)
 			.then(function(res) {
-				if(res) res = JSON.parse(res);
+				if(res) {
+					res = JSON.parse(res);
+				}
 				defer.resolve(res);
 			})
 			.catch(function(err) {
 				defer.reject(err);
-			})
+			});
 		})
 		.catch(function(err) {
 			defer.reject(err);
-		})
+		});
 
 		return defer.promise;
-	}
+	};
 
 	App.Providers.Reddit = Reddit;
 

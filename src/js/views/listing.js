@@ -34,14 +34,14 @@
 			}
 			else {
 				App.vent.trigger('main:upvote', _this.model.get('name'), function() {
-					if(_this.model.get('likes') != null && _this.model.get('likes') == false) { // was downvoted before
+					if(_this.model.get('likes') != null && _this.model.get('likes') === false) { // was downvoted before
 						_this.model.set('score', _this.model.get('score') + 2);
 					}
 					else {
 						_this.model.set('score', _this.model.get('score') + 1);
 					}
 					_this.model.set('likes', true);
-				})
+				});
 			}
 		},
 
@@ -50,7 +50,7 @@
 
 			e.stopPropagation();
 
-			if(_this.model.get('likes') != null && _this.model.get('likes') == false) {
+			if(_this.model.get('likes') != null && _this.model.get('likes') === false) {
 				return _this.unvote();
 			}
 			else {
@@ -62,7 +62,7 @@
 						_this.model.set('score', _this.model.get('score') - 1);
 					}
 					_this.model.set('likes', false);
-				})
+				});
 			}
 		},
 
@@ -76,7 +76,7 @@
 					_this.model.set('score', _this.model.get('score') + 1);
 				}
 				_this.model.set('likes', null);
-			})
+			});
 		},
 		
 	});

@@ -117,7 +117,7 @@ module.exports = function(grunt) {
 				options: {
 					jshintrc: 'src/.jshintrc'
 				},
-				src: ['src/models/*.js', 'src/js/*.js']
+				src: ['src/models/*.js', 'src/js/*.js', 'src/js/views/*.js', 'src/providers/*.js']
 			}
 		},
 

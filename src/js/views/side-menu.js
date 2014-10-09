@@ -20,7 +20,7 @@ var Q = require('q');
 		launchOAuth : function(e) {
 			e.preventDefault();
 			var gui = require('nw.gui');
-			gui.App.addOriginAccessWhitelistEntry('https://ssl.reddit.com/', "app", "redditx", true); 
+			gui.App.addOriginAccessWhitelistEntry('https://ssl.reddit.com/', 'app', 'redditx', true); 
 			var win = gui.Window.open($(e.target).attr('href'), {
 				toolbar: false,
 				frame: false,
