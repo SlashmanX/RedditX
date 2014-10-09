@@ -7,10 +7,6 @@
 		tagName: 'section',
 		className: 'listings',
 		itemView: App.View.Listing,
-		itemViewContainer: '.items',
-		ui : {
-			spinner: '.spinner'
-		},
 
 		initialize: function () {
 			_this = this;
@@ -25,13 +21,11 @@
 		},
 
 		onLoading: function() {
-			console.log('loading');
-			console.log(_this);
+			App.vent.trigger('main:showloading');
 		},
 
 		onLoaded: function() {
-			console.log('loaded');
-			_this.ui.spinner.hide();
+			App.vent.trigger('main:hideloading');
 		}
 	});
 	App.View.ListingsView = ListingsView;

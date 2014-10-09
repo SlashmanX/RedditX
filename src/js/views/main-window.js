@@ -15,6 +15,10 @@
 			Submission: '#submission'
 		},
 
+		ui: {
+			LoadingBar: '#loading-bar'
+		},
+
 		initialize: function() {
 			_this = this;
 
@@ -33,6 +37,9 @@
 			App.vent.on('main:upvote', _.bind(this.upvote, this));
 			App.vent.on('main:downvote', _.bind(this.downvote, this));
 			App.vent.on('main:unvote', _.bind(this.unvote, this));
+
+			App.vent.on('main:showloading', _.bind(this.showLoading, this));
+			App.vent.on('main:hideloading', _.bind(this.hideLoading, this));
 		},
 
 		onShow: function() {
@@ -110,6 +117,14 @@
 			.then(function() {
 				cb();
 			});
+		},
+
+		showLoading: function() {
+			_this.ui.LoadingBar.show();
+		},
+
+		hideLoading: function() {
+			_this.ui.LoadingBar.hide();
 		}
 	});
 
