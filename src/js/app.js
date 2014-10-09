@@ -11,6 +11,7 @@ var path = require('path');
 var fs = require('fs');
 var url = require('url');
 var moment = require('moment');
+var Q = require('q');
 
 // Load in external templates
 _.each(document.querySelectorAll('[type="text/x-template"]'), function(el) {
@@ -30,16 +31,36 @@ App.addRegions({
 	Window: '.main-window-region'
 });
 
-App.on('start', function(options) {
-	setTimeout(function() { // XXX: No idea why I need this, event are not firing correctly, will readdress
-		try {
-			App.Window.show(new App.View.MainWindow());
-		} catch (e) {
-			console.error('Couldn\'t start app: ', e, e.stack);
-		}
-		win.show();
-	}, 20);
+var initTemplates = function() {
+	// Load in external templates
+	var ts = [];
 
+	_.each(document.querySelectorAll('[type="text/x-template"]'), function (el) {
+		var d = Q.defer();
+		$.get(el.src, function (res) {
+			el.innerHTML = res;
+			d.resolve(true);
+		});
+		ts.push(d.promise);
+	});
+
+	return Q.all(ts);
+
+}
+var initApp = function() {
+	var mainWindow = new App.View.MainWindow();
+	win.show();
+
+	try {
+		App.Window.show(mainWindow);
+	} catch (e) {
+		console.error('Couldn\'t start app: ', e, e.stack);
+	}
+}
+
+App.addInitializer(function (options) {
+	initTemplates()
+	.then(initApp);
 });
 
 
