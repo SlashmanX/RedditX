@@ -32,11 +32,13 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('default', [
 		'bower_clean',
+		'jshint',
 		'css',
 	]);
 
 	grunt.registerTask('build', [
 		'bower_clean',
+		'jshint',
 		'css',
 		'nodewebkit'
 	]);

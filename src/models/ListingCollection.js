@@ -44,7 +44,7 @@
 		doneLoading: function(listings, after) {
 			_.each(listings, function(listing) {
 				_this.add(new App.Model.Listing(listing));
-			})
+			});
 			_this.trigger('sync', _this);
 			_this.state = 'loaded';
 			_this.trigger('loaded', _this, _this.state);

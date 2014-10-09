@@ -46,7 +46,8 @@ var initTemplates = function() {
 
 	return Q.all(ts);
 
-}
+};
+
 var initApp = function() {
 	var mainWindow = new App.View.MainWindow();
 	win.show();
@@ -56,7 +57,7 @@ var initApp = function() {
 	} catch (e) {
 		console.error('Couldn\'t start app: ', e, e.stack);
 	}
-}
+};
 
 App.addInitializer(function (options) {
 	initTemplates()
