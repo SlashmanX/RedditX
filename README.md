@@ -1,4 +1,4 @@
-RedditX
+RedditX [![Build Status](https://travis-ci.org/SlashmanX/RedditX.svg)](https://travis-ci.org/SlashmanX/RedditX)
 ====================
 Reddit App built in Node-Webkit
 
