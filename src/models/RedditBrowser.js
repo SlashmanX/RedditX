@@ -34,7 +34,6 @@
 			}));
 		},
 		onFilterChange: function () {
-
 			_this.collection = new App.Model.ListingCollection([], {
 				filter: _this.filter
 			});

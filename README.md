@@ -7,9 +7,9 @@ Cross-platform Reddit App built in Node-Webkit.
 - Subreddit sync
 - Homepage/subreddit loading
 - Voting on Submissions
+- AutoLoad More submissions when scrolling down
 
 #### Still to do (in order)
-- "Load More" when scrolling down
 - Change filters (hot, top, new etc. Already code in place, just UI to do)
 - View submission comments
 - Open Submission link in parsed format (parse YouTube videos, gifs, gfy's etc)

@@ -3,6 +3,7 @@
 
     var Q = require('q');
     var _this;
+    var firstLoad;
 
     var ListingCollection = Backbone.Collection.extend({
         model: App.Model.Listing,
@@ -10,6 +11,7 @@
         initialize: function (models, options) {
 
 			_this = this;
+			firstLoad = true;
 
 			options = options || {};
 			options.filter = options.filter || new App.Model.Filter();
@@ -24,7 +26,7 @@
 
 		fetch: function () {
 
-			if (_this.state === 'loading') {
+			if (_this.state === 'loading' || (!_this.filter.after && !firstLoad)) {
 				return;
 			}
 
@@ -41,10 +43,12 @@
 			}
 		},
 
-		doneLoading: function(listings, after) {
-			_.each(listings, function(listing) {
+		doneLoading: function(listings) {
+			_.each(listings.submissions, function(listing) {
 				_this.add(new App.Model.Listing(listing));
 			});
+			firstLoad = false;
+			_this.filter.after = listings.after;
 			_this.trigger('sync', _this);
 			_this.state = 'loaded';
 			_this.trigger('loaded', _this, _this.state);
