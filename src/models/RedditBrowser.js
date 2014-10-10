@@ -29,6 +29,12 @@
 		},
 
 		onShow: function () {
+			_this.bar = new App.View.FilterBar({
+				model: _this.filter
+			});
+
+			_this.FilterBar.show(_this.bar);
+
 			_this.ItemList.show(new App.View.ListingsView({
 				collection: _this.collection
 			}));
