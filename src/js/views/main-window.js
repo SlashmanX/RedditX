@@ -55,6 +55,8 @@
 				policy.ignore();
 			});
 
+			App.vent.trigger('user:initialize');
+
 		},
 
 		initialUserSetup: function() {
@@ -63,7 +65,7 @@
 		},
 
 		getUserInfo: function() {
-			App.Reddit.call('me').then(function(info) {
+			App.Reddit.call('u').then(function(info) {
 				App.User.set('id', info.id);
 				App.User.set('name', info.name);
 				App.User.set('link_karma', info.link_karma);
@@ -77,8 +79,8 @@
 		},
 
 		getUserSubreddits: function(cb) {
-			App.Reddit.call('subreddits', {}).then(function(subs) {
-				subs = _.sortBy(subs, function(sub) { 
+			App.Reddit.call('subscriber').then(function(subs) {
+				subs = _.sortBy(subs.submissions, function(sub) {
 					return sub.display_name.toLowerCase();
 				});
 
