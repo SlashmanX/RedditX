@@ -23,7 +23,7 @@
 
 		loadSubmission: function(e) {
 			$('#submission').removeClass('hidden').addClass('shown');
-			$('#submission').html('<iframe nwdisable nwfaketop src="'+ this.model.get('url')+ '"/>')
+			$('#submission').html('<iframe nwdisable nwfaketop src="'+ this.model.get('url')+ '"/>');
 			//App.vent.trigger('main:getsubmission', this.model.get('id'), {});
 		},
 
