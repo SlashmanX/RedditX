@@ -1,0 +1,21 @@
+#submission {
+	height: ~"calc(100% - @{header_height})";;
+	width: ~"calc(100% - @{side-menu_width})";
+	position: fixed;
+	top: @header_height;
+	background: white;
+	transition: left 0.3s linear;
+
+	&.shown {
+		left: @side-menu_width;
+	}
+
+	&.hidden {
+		left: 100%;
+	}
+
+	iframe {
+		width: 100%;
+		height: 100%;
+	}
+}

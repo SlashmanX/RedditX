@@ -94,7 +94,6 @@ var Q = require('q');
 		var defer = Q.defer();
 		var diff = Date.now() - App.User.get('token_expires');
 		if(parseInt(diff, 10) > 0) {
-			console.log('refreshing token');
 			return Auth.refreshAccessToken();
 		}
 		else {

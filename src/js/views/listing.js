@@ -22,7 +22,9 @@
 		},
 
 		loadSubmission: function(e) {
-			App.vent.trigger('main:getsubmission', this.model.get('id'), {});
+			$('#submission').removeClass('hidden').addClass('shown');
+			$('#submission').html('<iframe nwdisable nwfaketop src="'+ this.model.get('url')+ '"/>')
+			//App.vent.trigger('main:getsubmission', this.model.get('id'), {});
 		},
 
 		upvote: function(e) {
