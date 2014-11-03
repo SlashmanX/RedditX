@@ -6,7 +6,7 @@ Sort: <select name = 'sort' id = 'sort' class = 'sort'>
 </select>
 
 <%
-	if(sort === 'top' || sort === 'controverisal') {
+	if(sort === 'top' || sort === 'controversial') {
 		%>
 		From: <select name = 'time' id = 'time' class = 'time'>
 			<option value = 'hour'>hour</option>

@@ -9,7 +9,16 @@
 		},
 		events: {
 			'change .sort': 'sortBy',
-			'change .time': 'changeTime',
+			'change .time': 'changeTime'
+		},
+
+		initialize: function() {  
+			this.on('render', this.display);
+		},
+
+		display: function() {
+			$('.sort').val(this.model.get('sort'));
+			$('.time').val(this.model.get('t'));
 		},
 
 		sortBy: function (e) {
