@@ -41,6 +41,7 @@
 		
 		// Third party
 		"Backbone": true,
-		"_": true
+		"_": true,
+		"gfyCollection": true
 	}
 }
