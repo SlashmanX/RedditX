@@ -10,6 +10,9 @@
 				return App.Parsers.Imgur;
 			case 'gfycat.com':
 				return App.Parsers.Gfycat;
+			case 'youtube.com':
+			case 'youtu.be':
+				return App.Parsers.YouTube;
 			default:
 				return App.Parsers.Generic;
 		}

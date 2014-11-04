@@ -1,0 +1,1 @@
+<iframe id="ytplayer" type="text/html" src="http://www.youtube.com/embed/<%= youtube_id %>" frameborder="0"/>
