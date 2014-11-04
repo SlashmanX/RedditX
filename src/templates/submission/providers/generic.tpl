@@ -1,0 +1,1 @@
+<iframe class = "submission-embedded" nwdisable nwfaketop src="<%= url %>"/>

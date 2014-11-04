@@ -1,0 +1,1 @@
+<img class="gfyitem" data-id="<%= gfy_id %>" />

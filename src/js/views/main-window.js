@@ -96,15 +96,15 @@
 			});
 		},
 
-		getSubmission: function(article, opts, cb) {
+		getSubmission: function(model, opts, cb) {
 			var l = [];
-			App.Reddit.call('submission', article, opts)
-			.then(function(sub) {
-				console.log(sub);
-			});
+			this.Submission.show(new App.View.SubmissionViewer({
+				model: model
+			}));
 		},
 
 		upvote: function(article, cb) {
+			console.log('upvoting: '+ article);
 			App.Reddit.call('upvote', article)
 			.then(function() {
 				cb();

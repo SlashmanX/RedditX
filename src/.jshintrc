@@ -37,6 +37,7 @@
 		"Providers": true,
 		"View": true,
 		"Settings": true,
+		"Parsers": true,
 		
 		// Third party
 		"Backbone": true,

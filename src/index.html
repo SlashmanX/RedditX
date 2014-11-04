@@ -13,6 +13,11 @@
 		<script id="browser-tpl" src="templates/browser.tpl" type="text/x-template"></script>
 		<script id="filter-bar-tpl" src="templates/filter-bar.tpl" type="text/x-template"></script>
 		<script id="listing-tpl" src="templates/listing.tpl" type="text/x-template"></script>
+		<script id="submission-toolbar-tpl" src="templates/submission/toolbar.tpl" type="text/x-template"></script>
+		<script id="view-generic-tpl" src="templates/submission/providers/generic.tpl" type="text/x-template"></script>
+		<script id="view-imgur-tpl" src="templates/submission/providers/imgur.tpl" type="text/x-template"></script>
+		<script id="view-gfycat-tpl" src="templates/submission/providers/gfycat.tpl" type="text/x-template"></script>
+		<script id="submission-viewer-tpl" src="templates/submission/viewer.tpl" type="text/x-template"></script>
 
 		<!-- Basic Dependencies -->
 		<script src="vendor/jquery/dist/jquery.min.js"></script>
@@ -21,6 +26,7 @@
 		<script src="vendor/marionette/lib/backbone.marionette.min.js"></script>
 		<script src="vendor/backbone.localStorage/backbone.localStorage-min.js"></script>
 		<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script type"text/javascript" src="http://test.gfycat.com/gfycat_test_june25.js"></script>
 
 		<!-- Settings Module -->
 		<script src="js/settings.js"></script>
@@ -37,7 +43,13 @@
 		<script src="models/Listing.js"></script>
 		<script src="models/ListingCollection.js"></script>
 		<script src="models/RedditBrowser.js"></script>
+		<script src="models/SubmissionViewer.js"></script>
 
+		<!-- Parsers -->
+		<script src="parsers/Parser.js"></script>
+		<script src="parsers/generic.js"></script>
+		<script src="parsers/imgur.js"></script>
+		<script src="parsers/gfycat.js"></script>
 		<!-- UI -->
 		<script src="js/views/main-window.js"></script>
 		<script src="js/views/side-menu.js"></script>
@@ -45,6 +57,8 @@
 		<script src="js/views/filter-bar.js"></script>
 		<script src="js/views/listing.js"></script>
 		<script src="js/views/listings-view.js"></script>
+		<script src="js/views/submission/submission.js"></script>
+		<script src="js/views/submission/toolbar.js"></script>
 
 		<script src="js/bootstrap.js"></script>
 	</body>

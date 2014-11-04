@@ -24,7 +24,8 @@ var App = new Backbone.Marionette.Application();
 _.extend(App, {
 	View: {},
 	Model: {},
-	Providers: {}
+	Providers: {},
+	Parsers: {}
 });
 
 App.addRegions({

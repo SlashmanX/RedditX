@@ -1,28 +1,25 @@
 (function (App) {
 	'use strict';
 
-	var Listing = Backbone.Marionette.ItemView.extend({
-		template: '#listing-tpl',
-
-		tagName: 'article',
-		className: 'listing',
-
-		events : {
-			'click .info' : 'loadSubmission',
+	App.View.SubmissionToolBar = Backbone.Marionette.ItemView.extend({
+		className: 'submission-toolbar',
+		template: 'toolbar-tpl',
+		ui: {
+			sorter: '.sort',
+			time: '.time'
+		},
+		events: {
 			'click .upvote': 'upvote',
 			'click .downvote': 'downvote',
+			'click .closeSubmission': 'closeSubmission'
 		},
 
-		ui : {
-			voting : '.voting'
-		},
-
-		initialize : function() {
+		initialize: function() {  
 			this.model.on('change', this.render, this);
 		},
 
-		loadSubmission: function(e) {
-			App.vent.trigger('main:getsubmission', this.model, {});
+		closeSubmission: function() {
+			$('#submission').removeClass('shown').addClass('hidden');
 		},
 
 		upvote: function(e) {
@@ -78,7 +75,10 @@
 				_this.model.set('likes', null);
 			});
 		},
-		
 	});
-	App.View.Listing = Listing;
+
+	App.View.SubmissionToolBar = App.View.SubmissionToolBar.extend({
+		template: '#submission-toolbar-tpl'
+	});
+
 })(window.App);
