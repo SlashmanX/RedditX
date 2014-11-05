@@ -27,8 +27,10 @@ module.exports = function(grunt) {
 	var currentVersion = pkgJson.version;
 
 	require('load-grunt-tasks')(grunt);
-	grunt.loadNpmTasks('grunt-contrib-less');
+
 	grunt.loadNpmTasks('grunt-bower-clean');
+	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-less');
 
 	grunt.registerTask('default', [
 		'bower_clean',
@@ -37,10 +39,9 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('build', [
-		'bower_clean',
-		'jshint',
-		'css',
-		'nodewebkit'
+		'default',
+		'nodewebkit',
+		'copy:ffmpeg'
 	]);
 
 	grunt.registerTask('css', [
@@ -120,6 +121,52 @@ module.exports = function(grunt) {
 				src: ['src/models/*.js', 'src/js/*.js', 'src/js/views/*.js','src/js/views/submission/*.js', 'src/providers/*.js', 'src/parsers/*.js']
 			}
 		},
+		copy: {
+			ffmpeg: {
+				files: [
+				{
+					src: 'libraries/win/ffmpegsumo.dll',
+					dest: 'build/releases/RedditX/win/ffmpegsumo.dll',
+					flatten: true
+				},
+				{
+					src: 'libraries/win/ffmpegsumo.dll',
+					dest: 'build/cache/win/<%= nodewebkit.options.version %>/ffmpegsumo.dll',
+					flatten: true
+				},
+				{
+					src: 'libraries/mac/ffmpegsumo.so',
+					dest: 'build/releases/RedditX/osx/RedditX.app/Contents/Frameworks/node-webkit Framework.framework/Libraries/ffmpegsumo.so',
+					flatten: true
+				},
+				{
+					src: 'libraries/mac/ffmpegsumo.so',
+					dest: 'build/cache/osx/<%= nodewebkit.options.version %>/node-webkit.app/Contents/Frameworks/node-webkit Framework.framework/Libraries/ffmpegsumo.so',
+					flatten: true
+				},
+				{
+					src: 'libraries/linux64/libffmpegsumo.so',
+					dest: 'build/releases/RedditX/linux64/libffmpegsumo.so',
+					flatten: true
+				},
+				{
+					src: 'libraries/linux64/libffmpegsumo.so',
+					dest: 'build/cache/linux64/<%= nodewebkit.options.version %>/libffmpegsumo.so',
+					flatten: true
+				},
+				{
+					src: 'libraries/linux32/libffmpegsumo.so',
+					dest: 'build/releases/RedditX/linux32/libffmpegsumo.so',
+					flatten: true
+				},
+				{
+					src: 'libraries/linux32/libffmpegsumo.so',
+					dest: 'build/cache/linux32/<%= nodewebkit.options.version %>/libffmpegsumo.so',
+					flatten: true
+				}
+				]
+			},
+		}
 
 	});
 
