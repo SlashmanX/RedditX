@@ -11,11 +11,27 @@ Cross-platform Reddit App built in Node-Webkit.
 - Change filters (hot, top, new etc.)
 
 #### Still to do (in order)
-- View submission comments
 - Open Submission link in parsed format (parse YouTube videos, imgur, gfy's etc, webpages just display in iframe)
+- View submission comments
 - Comment on Submission
 - Submit to a subreddit
 - Search
 - Account Switcher (code in place)
+
+#### Parsers
+A list of parsers RedditX currently, and hopes to, support (in some form)
+
+[x] imgur
+[x] imgur gifv
+[] imgur galleries
+[x] gfycat
+[x] YouTube
+[] Vimeo
+[] DailyMotion
+[] Twitter
+[] Vine
+[] Reddit
+[] Mediacrush
+[] Fitbamob
 
 Base app from [FritzH321](https://github.com/FritzH321/node-webkit-base-app)

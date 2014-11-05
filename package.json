@@ -37,7 +37,7 @@
 		"resizeable": true
 	},
 
-	"user-agent" : "%name - %ver",
+	"user-agent": "%name/%ver Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36",
 
 	"dependencies": {
 		"moment": "2.8.3",
@@ -62,5 +62,9 @@
 
 	"engines": {
 		"node": ">=0.8.0"
+	},
+
+	"webkit": {
+		"plugin": true
 	}
 }

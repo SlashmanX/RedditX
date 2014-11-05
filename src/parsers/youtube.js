@@ -18,8 +18,8 @@
 
 		initialize: function() {
 			var u = new URI(this.model.get('url'));
-			console.log(u.query(true).v);
-			this.model.set('youtube_id', u.query(true).v)
+			console.log(u.query(true).v); // TODO: Account for the "attribution_link?" style URL's
+			this.model.set('youtube_id', u.query(true).v);
 		}
 	});
 
