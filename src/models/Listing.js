@@ -48,6 +48,18 @@
 			visited: false,
 			num_reports: null,
 			distinguished: null
+		},
+
+		initialize: function() {
+			if(this.get('thumbnail') === 'self') {
+				this.set('thumbnail', '/src/img/self.png');
+			}
+			else if(this.get('thumbnail') === 'nsfw') {
+				this.set('thumbnail','/src/img/nsfw.png');
+			}
+			else if(this.get('thumbnail') === 'default') {
+				this.set('thumbnail','/src/img/default.png');
+			}
 		}
 	});
 
