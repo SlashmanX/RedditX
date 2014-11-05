@@ -21,17 +21,17 @@ Cross-platform Reddit App built in Node-Webkit.
 #### Parsers
 A list of parsers RedditX currently, and hopes to, support (in some form)
 
-[x] imgur
-[x] imgur gifv
-[] imgur galleries
-[x] gfycat
-[x] YouTube
-[] Vimeo
-[] DailyMotion
-[] Twitter
-[] Vine
-[] Reddit
-[] Mediacrush
-[] Fitbamob
+- [x] imgur
+- [x] imgur gifv
+- [ ] imgur galleries
+- [x] gfycat
+- [x] YouTube
+- [ ] Vimeo
+- [ ] DailyMotion
+- [ ] Twitter
+- [ ] Vine
+- [ ] Reddit
+- [ ] Mediacrush
+- [ ] Fitbamob
 
 Base app from [FritzH321](https://github.com/FritzH321/node-webkit-base-app)
