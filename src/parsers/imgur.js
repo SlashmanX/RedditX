@@ -4,6 +4,7 @@
 	var inherits = require('util').inherits;
 	var imgurJS = require('imgur-js');
 	var imgur = new imgurJS('47af492bc2c7828');
+	var Q = require('q');
 
 	var Imgur = App.Parsers.Generic.extend({
 		defaults: {

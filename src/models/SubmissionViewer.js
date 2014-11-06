@@ -33,7 +33,7 @@
 				_this.Submission.show(new template({model: _this.model}));
 				$('#submission').removeClass('hidden').addClass('shown');
 				App.vent.trigger('main:hideloading');
-			})
+			});
 		}
 	});
 
