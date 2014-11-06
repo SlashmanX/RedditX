@@ -17,6 +17,7 @@
 		},
 
 		onShow: function () {
+			App.vent.trigger('main:showloading');
 			_this.toolbar = new App.View.SubmissionToolBar({
 				model: _this.model
 			});
@@ -25,9 +26,14 @@
 
 			var View = App.Parsers.Parse(_this.model.get('url'));
 
-			_this.Submission.show(new (new View()).template({model: _this.model}));
+			var view = new View();
 
-			$('#submission').removeClass('hidden').addClass('shown');
+			view.setup(_this.model).then(function() {
+				var template = view.template;
+				_this.Submission.show(new template({model: _this.model}));
+				$('#submission').removeClass('hidden').addClass('shown');
+				App.vent.trigger('main:hideloading');
+			})
 		}
 	});
 

@@ -40,6 +40,7 @@
 	"user-agent": "%name/%ver Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.47 Safari/537.36",
 
 	"dependencies": {
+		"imgur-js" : "git://github.com/SlashmanX/imgurJS.git",
 		"moment": "2.8.3",
 		"node-reddit" : "git://github.com/SlashmanX/node-reddit.git",
 		"q": "1.0.1",

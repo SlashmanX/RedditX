@@ -3,7 +3,7 @@
 	var URI = require('URIjs');
 	var self;
 
-	var YouTube = Backbone.Model.extend({
+	var YouTube = App.Parsers.Generic.extend({
 		defaults: {
 			type: 'youtube',
 		},
@@ -15,6 +15,7 @@
 
 	var YouTubeView = Backbone.Marionette.ItemView.extend({
 		template: '#view-youtube-tpl',
+		className: 'submission-youtube',
 
 		initialize: function() {
 			var u = new URI(this.model.get('url'));

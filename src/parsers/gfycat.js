@@ -15,6 +15,7 @@
 
 	var GfycatView = Backbone.Marionette.ItemView.extend({
 		template: '#view-gfycat-tpl',
+		className: 'submission-gfycat',
 
 		initialize: function() {
 			this.model.set('gfy_id', new URI(this.model.get('url')).filename());
