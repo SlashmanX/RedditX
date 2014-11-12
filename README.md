@@ -23,7 +23,7 @@ A list of parsers RedditX currently, and hopes to, support (in some form)
 
 - [x] imgur
 - [x] imgur gifv
-- [ ] imgur galleries
+- [x] imgur galleries
 - [x] gfycat
 - [x] YouTube
 - [ ] Vimeo
