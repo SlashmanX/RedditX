@@ -35,6 +35,8 @@
 
 			App.vent.on('main:getsubmission', _.bind(this.getSubmission, this));
 
+			App.vent.on('main:getcomments', _.bind(this.getComments, this));
+
 			App.vent.on('main:upvote', _.bind(this.upvote, this));
 			App.vent.on('main:downvote', _.bind(this.downvote, this));
 			App.vent.on('main:unvote', _.bind(this.unvote, this));
@@ -102,6 +104,14 @@
 			this.Submission.show(new App.View.SubmissionViewer({
 				model: model
 			}));
+		},
+
+		getComments: function(model, opts, cb) {
+			App.Reddit.call('submission', model.get('id'), opts).then(function(data) {
+				console.log(data);
+			}).catch(function(err) {
+				console.log('Error: '+ error);
+			})
 		},
 
 		upvote: function(article, cb) {

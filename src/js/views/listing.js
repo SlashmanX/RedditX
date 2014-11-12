@@ -11,6 +11,7 @@
 			'click .info' : 'loadSubmission',
 			'click .upvote': 'upvote',
 			'click .downvote': 'downvote',
+			'click .comments': 'loadComments'
 		},
 
 		ui : {
@@ -23,6 +24,11 @@
 
 		loadSubmission: function(e) {
 			App.vent.trigger('main:getsubmission', this.model, {});
+		},
+
+		loadComments: function(e) {
+			e.stopPropagation();
+			App.vent.trigger('main:getcomments', this.model, {});
 		},
 
 		upvote: function(e) {
