@@ -110,8 +110,8 @@
 			App.Reddit.call('submission', model.get('id'), opts).then(function(data) {
 				console.log(data);
 			}).catch(function(err) {
-				console.log('Error: '+ error);
-			})
+				console.log('Error: '+ err);
+			});
 		},
 
 		upvote: function(article, cb) {
