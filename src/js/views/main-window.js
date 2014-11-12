@@ -32,6 +32,7 @@
 			App.vent.on('user:initialize', _.bind(this.initialUserSetup, this));
 			App.vent.on('user:getinfo', _.bind(this.getUserInfo, this));
 			App.vent.on('user:getsubreddits', _.bind(this.getUserSubreddits, this));
+
 			App.vent.on('main:getsubmission', _.bind(this.getSubmission, this));
 
 			App.vent.on('main:upvote', _.bind(this.upvote, this));

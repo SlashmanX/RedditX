@@ -14,7 +14,8 @@ var Q = require('q');
 		events : {
 			'click .authenticate' : 'launchOAuth',
 			'click .refresh-subreddits' : 'refreshSubreddits',
-			'click .subreddit' : 'loadSubreddit'
+			'click .subreddit' : 'loadSubreddit',
+			'click .frontpage' : 'loadFrontpage'
 		},
 
 		launchOAuth : function(e) {
@@ -40,6 +41,11 @@ var Q = require('q');
 			e.preventDefault();
 			var r = $(e.target).attr('href').replace('/r/', '').replace('/', '');
 			App.vent.trigger('browser:getsubreddit', r);
+		},
+
+		loadFrontpage : function(e) {
+			e.preventDefault();
+			App.vent.trigger('browser:gethomepage');
 		}
 		
 	});

@@ -55,7 +55,7 @@
 		},
 
 		getHomepage: function() {
-			_this.filterset('subreddit', null);
+			_this.filter.set('subreddit', null);
 		}
 	});
 
