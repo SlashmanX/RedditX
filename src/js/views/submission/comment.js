@@ -16,5 +16,6 @@
 
 	var RepliesView = Backbone.Collection.extend({
 		model: App.Model.Comment
-	})
+	});
+	
 })(window.App);
