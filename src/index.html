@@ -13,11 +13,14 @@
 		<script id="browser-tpl" src="templates/browser.tpl" type="text/x-template"></script>
 		<script id="filter-bar-tpl" src="templates/filter-bar.tpl" type="text/x-template"></script>
 		<script id="listing-tpl" src="templates/listing.tpl" type="text/x-template"></script>
+		<script id="comment-tpl" src="templates/submission/comment.tpl" type="text/x-template"></script>
 		<script id="submission-toolbar-tpl" src="templates/submission/toolbar.tpl" type="text/x-template"></script>
 		<script id="view-generic-tpl" src="templates/submission/providers/generic.tpl" type="text/x-template"></script>
 		<script id="view-imgur-tpl" src="templates/submission/providers/imgur.tpl" type="text/x-template"></script>
 		<script id="view-gfycat-tpl" src="templates/submission/providers/gfycat.tpl" type="text/x-template"></script>
 		<script id="view-youtube-tpl" src="templates/submission/providers/youtube.tpl" type="text/x-template"></script>
+		<script id="view-reddit-tpl" src="templates/submission/providers/reddit.tpl" type="text/x-template"></script>
+
 		<script id="submission-viewer-tpl" src="templates/submission/viewer.tpl" type="text/x-template"></script>
 
 		<!-- Basic Dependencies -->
@@ -43,7 +46,11 @@
 		<script src="models/User.js"></script>
 		<script src="models/Listing.js"></script>
 		<script src="models/ListingCollection.js"></script>
+
+		<script src="models/Comment.js"></script>
+		<script src="models/CommentCollection.js"></script>
 		<script src="models/RedditBrowser.js"></script>
+		<script src="models/RedditViewer.js"></script>
 		<script src="models/SubmissionViewer.js"></script>
 
 		<!-- Parsers -->
@@ -52,6 +59,7 @@
 		<script src="parsers/imgur.js"></script>
 		<script src="parsers/gfycat.js"></script>
 		<script src="parsers/youtube.js"></script>
+		
 		<!-- UI -->
 		<script src="js/views/main-window.js"></script>
 		<script src="js/views/side-menu.js"></script>
@@ -61,6 +69,15 @@
 		<script src="js/views/listings-view.js"></script>
 		<script src="js/views/submission/submission.js"></script>
 		<script src="js/views/submission/toolbar.js"></script>
+		<script src="js/views/submission/comment.js"></script>
+		<script src="js/views/submission/comments-view.js"></script>
+
+		<!-- Provider UI's -->
+		<script src="js/views/submission/providers/generic.js"></script>
+		<script src="js/views/submission/providers/gfycat.js"></script>
+		<script src="js/views/submission/providers/imgur.js"></script>
+		<script src="js/views/submission/providers/youtube.js"></script>
+		<script src="js/views/submission/providers/reddit.js"></script>
 
 		<script src="js/bootstrap.js"></script>
 	</body>

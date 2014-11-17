@@ -12,7 +12,7 @@
 		},
 
 		initialize: function () {
-			this.template = ImgurView;
+			this.template = App.View.Providers.Imgur;
 		},
 
 		setup: function(model) {
@@ -45,17 +45,6 @@
 
 			return defer.promise;
 		}
-	});
-
-	var ImgurView = Backbone.Marionette.ItemView.extend({
-		template: '#view-imgur-tpl',
-		className: 'submission-imgur',
-
-		initialize: function() {
-
-		},
-
-
 	});
 
 	App.Parsers.Imgur = Imgur;

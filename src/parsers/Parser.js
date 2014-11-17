@@ -13,6 +13,8 @@
 			case 'youtube.com':
 			case 'youtu.be':
 				return App.Parsers.YouTube;
+			case 'reddit.com':
+				return App.Parsers.Reddit;
 			default:
 				return App.Parsers.Generic;
 		}

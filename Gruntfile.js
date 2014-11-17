@@ -118,7 +118,7 @@ module.exports = function(grunt) {
 				options: {
 					jshintrc: 'src/.jshintrc'
 				},
-				src: ['src/models/*.js', 'src/js/*.js', 'src/js/views/*.js','src/js/views/submission/*.js', 'src/providers/*.js', 'src/parsers/*.js']
+				src: ['src/models/*.js', 'src/js/*.js', 'src/js/views/*.js','src/js/views/submission/*.js', 'src/js/views/submission/providers/*.js', 'src/providers/*.js', 'src/parsers/*.js']
 			}
 		},
 		copy: {

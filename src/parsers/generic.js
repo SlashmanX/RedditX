@@ -9,7 +9,7 @@
 			type: 'generic',
 		},
 		initialize: function () {
-			this.template = GenericView;
+			this.template = App.View.Providers.Generic;
 		},
 
 		setup: function(model) {
@@ -18,11 +18,6 @@
 			return defer.promise;
 		}
 
-	});
-
-	var GenericView = Backbone.Marionette.ItemView.extend({
-		template: '#view-generic-tpl',
-		className: 'submission-generic'
 	});
 
 	App.Parsers.Generic = Generic;
