@@ -2,7 +2,7 @@
 	'use strict';
 
 	var Comment = Backbone.Marionette.CompositeView.extend({
-	    tagName: 'div',
+	    tagName: 'article',
 	    template: '#comment-tpl',
 	    className: 'comment',
 	    initialize: function () {
@@ -17,5 +17,5 @@
 	var RepliesView = Backbone.Collection.extend({
 		model: App.Model.Comment
 	});
-	
+
 })(window.App);

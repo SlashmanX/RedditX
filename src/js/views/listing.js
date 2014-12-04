@@ -23,6 +23,7 @@
 		},
 
 		loadSubmission: function(e) {
+			e.stopPropagation();
 			App.vent.trigger('main:getsubmission', this.model, {});
 		},
 

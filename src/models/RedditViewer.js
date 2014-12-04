@@ -8,7 +8,8 @@
 		className: 'reddit-viewer',
 		regions: {
 			Submission: '.reddit-submission',
-			Comments: '.reddit-comments'
+			Comments: '.reddit-comments',
+			Toolbar: '.submission-toolbar'
 		},
 
 		initialize: function () {
@@ -16,7 +17,8 @@
 			console.log(this);
 
 			_this.collection = new App.Model.CommentCollection([], {
-				submission: _this.model
+				submission: _this.model,
+				opts: _this.opts
 			});
 
 			_this.collection.fetch();
@@ -29,6 +31,12 @@
 			});
 
 			_this.Submission.show(_this.submission);*/
+			_this.toolbar = new App.View.SubmissionToolBar({
+				model: _this.model
+			});
+
+			_this.Toolbar.show(_this.toolbar);
+
 			_this.Comments.show(new App.View.CommentsView({
 				collection: _this.collection
 			}));

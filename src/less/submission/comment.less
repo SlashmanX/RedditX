@@ -1,6 +1,6 @@
 .reddit-comments {
 	.scrollable();
-	height: 100%;
+	height: ~"calc(100% - @{toolbar_height})";
 	section {
 		height: 100%;
 
@@ -14,8 +14,9 @@
 			color:darken(@header-color, 60%);
 			border-bottom: 1px solid darken(@header-color, 20%);
 
-			> div {
+			> ul {
 				margin-right: 5px;
+				list-style: none;
 			}
 
 			> ul {

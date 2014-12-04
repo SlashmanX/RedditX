@@ -13,7 +13,7 @@
 </div>
 <div class="info">
 	<div class = "metadata">
-		<span class="post_author"><%= author %></span> <%= subreddit %> <span class="post_time_created"><%= moment(created_utc, 'X').fromNow() %></span>
+		<span class="post_author"><%= author %></span> <span class="comment_falir"><%= author_flair_text %></span> <span class="post_time_created"><%= moment(created_utc, 'x').fromNow() %></span>
 	</div>
 	<div class = "body"><%= body %></div>
 </div>

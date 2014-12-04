@@ -12,6 +12,7 @@
 
 			_this = this;
 			_this.submission = options.submission;
+			_this.opts = options.opts;
 
 			options = options || {};
 			options.filter = options.filter || new App.Model.Filter();
@@ -30,7 +31,7 @@
 
 			_this.state = 'loading';
 			_this.trigger('loading', this);
-			App.Reddit.call('submission', _this.submission.get('id'), _this.filter)
+			App.Reddit.call('submission', _this.submission.get('id'), {})
 			.then(_this.doneLoading);
 		},
 

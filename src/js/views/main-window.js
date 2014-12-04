@@ -107,14 +107,10 @@
 		},
 
 		getComments: function(model, opts, cb) {
-			App.Reddit.call('submission', model.get('id'), opts).then(function(data) {
-				model.set('comments', data.comments);
-				_this.Submission.show(new App.View.RedditViewer({
-					model: model
-				}));
-			}).catch(function(err) {
-				console.log('Error: '+ err);
-			});
+			_this.Submission.show(new App.View.RedditViewer({
+				model: model,
+				opts: opts
+			}));
 		},
 
 		upvote: function(article, cb) {

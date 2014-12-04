@@ -1,0 +1,43 @@
+.submission-toolbar {
+	height: @toolbar_height;
+	width: 100%;
+	text-align: center;
+	color: lighten(@header-color, 50%);
+	border-bottom: 1px solid darken(@side-menu, 50%);
+	display:flex;
+	background: @side-menu;
+
+	span {
+		border-right: 1px solid gray;
+		padding: 5px;
+		cursor: pointer;
+		flex: 1;
+
+		&.title {
+			flex: 15;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+	}
+
+	.vote {
+		color: #D0D0D0;
+		&.liked {
+			color: @upvote_color;
+		}
+		&.disliked {
+			color: @downvote_color;
+		}
+
+		&:hover {
+			&.upvote {
+				color: @upvote_color;
+			}
+
+			&.downvote {
+				color: @downvote_color;
+			}
+		}
+	}
+}
