@@ -4,7 +4,7 @@
 	var CommentsView = Backbone.Marionette.CollectionView.extend({
 
 		template: '#comments-tpl',
-		tagName: 'section',
+		tagName: 'ul',
 		itemView: App.View.Comment,
 
 		initialize: function () {

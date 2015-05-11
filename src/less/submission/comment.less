@@ -1,11 +1,13 @@
 .reddit-comments {
 	.scrollable();
 	height: ~"calc(100% - @{toolbar_height})";
-	section {
+	ul {
 		height: 100%;
+		flex-flow: row wrap;
 
 		.comment {
 			display: flex;
+			flex-flow: row wrap;
 			align-items: center;
 			margin: 5px;
 			padding: 15px;
@@ -15,13 +17,51 @@
 			border-bottom: 1px solid darken(@header-color, 20%);
 
 			> ul {
-				margin-right: 5px;
+				display: flex;
+				margin-left: 15px;
 				list-style: none;
+
+				li {
+					margin-top: 10px;
+					background: #EEEEEE;
+				}
 			}
 
-			> ul {
-				display: none;
-				margin-left: 5px;
+
+			> ul ul {
+				li {
+					background: #FFFFFF;
+				}
+			}
+
+			> ul ul ul {
+				li {
+					background: #EEEEEE;
+				}
+			}
+
+			> ul ul ul ul {
+				li {
+					background: #FFFFFF;
+				}
+			}
+
+			> ul ul ul ul ul {
+				li {
+					background: #EEEEEE;
+				}
+			}
+
+			> ul ul ul ul ul ul {
+				li {
+					background: #FFFFFF;
+				}
+			}
+
+			> ul ul ul ul ul {
+				li {
+					background: #EEEEEE;
+				}
 			}
 
 			.voting {
