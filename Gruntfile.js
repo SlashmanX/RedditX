@@ -11,7 +11,8 @@ var parseBuildPlatforms = function(argumentPlatform) {
 
 	var buildPlatforms = {
 		mac: /mac/.test(inputPlatforms) || buildAll,
-		win: /win/.test(inputPlatforms) || buildAll,
+		win32: /win32/.test(inputPlatforms) || buildAll,
+		win64: /win64/.test(inputPlatforms) || buildAll,
 		linux32: /linux32/.test(inputPlatforms) || buildAll,
 		linux64: /linux64/.test(inputPlatforms) || buildAll
 	};
@@ -50,9 +51,11 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('start', function() {
 		var start = parseBuildPlatforms();
-		if (start.win) {
-			grunt.task.run('exec:win');
-		} else if (start.mac) {
+		if (start.win32) {
+			grunt.task.run('exec:win32');
+		} else if (start.win64) {
+			grunt.task.run('exec:win64');
+		}else if (start.mac) {
 			grunt.task.run('exec:mac');
 		} else if (start.linux32) {
 			grunt.task.run('exec:linux32');
@@ -81,14 +84,15 @@ module.exports = function(grunt) {
 
 		nodewebkit: {
 			options: {
-				version: '0.10.5',
+				version: '0.12.1',
 				buildDir: './build/releases', // Where the build version of my node-webkit app is saved
 				cacheDir: './build/cache',
 				keep_nw: true,
 				embed_nw: false,
 				zip: buildPlatforms.win, // Zip nw for mac in windows. Prevent path too long if build all is used.
 				mac: buildPlatforms.mac,
-				win: buildPlatforms.win,
+				win32: buildPlatforms.win32,
+				win64: buildPlatforms.win64,
 				linux32: buildPlatforms.linux32,
 				linux64: buildPlatforms.linux64,
 			},
@@ -99,8 +103,11 @@ module.exports = function(grunt) {
 		},
 
 		exec: {
-			win: {
-				cmd: '"build/cache/<%= nodewebkit.options.version %>/win/nw.exe" . --debug'
+			win32: {
+				cmd: '"build/cache/<%= nodewebkit.options.version %>/win32/nw.exe" . --debug'
+			},
+			win64: {
+				cmd: '"build/cache/<%= nodewebkit.options.version %>/win64/nw.exe" . --debug'
 			},
 			mac: {
 				cmd: 'build/cache/<%= nodewebkit.options.version %>/osx/node-webkit.app/Contents/MacOS/node-webkit . --debug'
@@ -126,12 +133,22 @@ module.exports = function(grunt) {
 				files: [
 				{
 					src: 'libraries/win/ffmpegsumo.dll',
-					dest: 'build/releases/RedditX/win/ffmpegsumo.dll',
+					dest: 'build/releases/RedditX/win32/ffmpegsumo.dll',
 					flatten: true
 				},
 				{
 					src: 'libraries/win/ffmpegsumo.dll',
-					dest: 'build/cache/win/<%= nodewebkit.options.version %>/ffmpegsumo.dll',
+					dest: 'build/releases/RedditX/win64/ffmpegsumo.dll',
+					flatten: true
+				},
+				{
+					src: 'libraries/win/ffmpegsumo.dll',
+					dest: 'build/cache/win32/<%= nodewebkit.options.version %>/ffmpegsumo.dll',
+					flatten: true
+				},
+				{
+					src: 'libraries/win/ffmpegsumo.dll',
+					dest: 'build/cache/win64/<%= nodewebkit.options.version %>/ffmpegsumo.dll',
 					flatten: true
 				},
 				{

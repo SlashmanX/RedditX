@@ -3,6 +3,7 @@
 	"private": "true",
 	"dependencies": {
 		"backbone.localStorage": "1.1.13",
+		"bootstrap": "3.3.4",
 		"font-awesome": "~4.1.0",
 		"jquery": "2.1.1",
 		"marionette": "~1.8.3",

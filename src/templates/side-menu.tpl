@@ -1,6 +1,13 @@
 <% if (id === -1) { %>
 
-	<li><a href="<%= App.Auth.generateAuthURL() %>" class='authenticate'><i class="fa fa-user"></i>Login to Reddit</a></li>
+	<h4>Login</h4>
+	<ul>
+		<li>
+			<a href="<%= App.Auth.generateAuthURL() %>" class='authenticate'>
+				<i class="fa fa-user"></i>Login to Reddit
+			</a>
+		</li>
+	</ul>
 
 <% } else { %>
 
