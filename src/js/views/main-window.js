@@ -114,7 +114,6 @@
 		},
 
 		upvote: function(article, cb) {
-			console.log('upvoting: '+ article);
 			App.Reddit.call('upvote', article)
 			.then(function() {
 				cb();
