@@ -4,7 +4,7 @@
 	</div>
 	<div class = "score">
 		<span class = "vote score <%= likes ? 'liked' : likes==false ? 'disliked' : ''%>">
-			<%= score %>
+			<%= score_hidden ? '-' : score %>
 		</span>
 	</div>
 	<div class="downvote">
